@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【測試版】你家的支持系統，現在是哪種狀態？</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FDF9F4;
+    --brown-deep: #2C1F14;
+    --brown-mid: #5C3D2E;
+    --brown-light: #A0745A;
+    --terracotta: #C4622D;
+    --terracotta-light: #E8907A;
+    --sage: #7A8C7E;
+    --gold: #C9A84C;
+    --border: #E8DDD4;
+    --shadow: rgba(44, 31, 20, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--brown-deep);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 24px 72px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(196,98,45,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(26px, 5vw, 44px);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--brown-deep);
+    max-width: 680px;
+    margin: 0 auto 24px;
