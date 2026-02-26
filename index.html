@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>你家現在是哪一種漏風？</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2; --warm-white: #FDF9F4;
+    --brown-deep: #2C1F14; --brown-mid: #5C3D2E; --brown-light: #A0745A;
+    --terracotta: #C4622D; --terracotta-light: #E8907A;
+    --border: #E8DDD4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--brown-deep); font-family: 'Noto Sans TC', sans-serif; font-weight: 300; line-height: 1.8; min-height: 100vh; }
+  .hero { background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 80px 24px 72px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(196,98,45,0.07) 0%, transparent 70%); border-radius: 50%; }
+  .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 24px; }
+  .hero h1 { font-family: 'Noto Serif TC', serif; font-size: clamp(26px, 5vw, 44px); font-weight: 700; line-height: 1.4; max-width: 680px; margin: 0 auto 24px; }
+  .hero h1 span { color: var(--terracotta); }
+  .hero-sub { font-size: 15px; color: var(--brown-light); max-width: 480px; margin: 0 auto 40px; line-height: 1.9; }
+  .hero-meta { display: inline-flex; gap: 24px; font-size: 12px; color: var(--brown-light); }
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+  .container { max-width: 680px; margin: 0 auto; padding: 0 24px 80px; }
+  .progress-wrap { padding: 32px 0 0; display: none; }
+  .progress-wrap.visible { display: block; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--brown-light); margin-bottom: 8px; }
+  .progress-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--terracotta); border-radius: 2px; transition: width 0.4s ease; width: 0%; }
+  .start-section { padding: 48px 0 0; text-align: center; }
+  .btn-start { background: var(--terracotta); color: white; font-family: 'Noto Sans TC', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: 0.05em; padding: 18px 48px; border: none; cursor: pointer; transition: all 0.25s ease; }
+  .btn-start:hover { background: var(--brown-mid); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(196,98,45,0.25); }
+  .start-note { font-size: 12px; color: var(--brown-light); margin-top: 16px; }
+  .question-section { display: none; padding-top: 40px; animation: fadeUp 0.4s ease forwards; }
+  .question-section.active { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .q-number { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 12px; }
+  .q-text { font-family: 'Noto Serif TC', serif; font-size: clamp(17px, 3vw, 22px); font-weight: 600; line-height: 1.6; color: var(--brown-deep); margin-bottom: 32px; }
+  .options { display: flex; flex-direction: column; gap: 12px; }
+  .option { display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px; background: var(--warm-white); border: 1.5px solid var(--border); cursor: pointer; transition: all 0.2s ease; position: relative; }
+  .option:hover { border-color: var(--terracotta-light); background: #FFF8F5; transform: translateX(4px); }
+  .option.selected { border-color: var(--terracotta); background: #FFF3EE; }
+  .option.selected::after { content: '✓'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: var(--terracotta); font-size: 14px; }
+  .option-radio { width: 18px; height: 18px; border: 1.5px solid var(--border); border-radius: 50%; flex-shrink: 0; margin-top: 2px; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+  .option.selected .option-radio { border-color: var(--terracotta); background: var(--terracotta); }
+  .option.selected .option-radio::after { content: ''; width: 6px; height: 6px; background: white; border-radius: 50%; }
+  .option-text { font-size: 14px; line-height: 1.7; color: var(--brown-mid); }
+  .q-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .btn-back { font-size: 13px; color: var(--brown-light); background: none; border: none; cursor: pointer; padding: 8px 0; transition: color 0.2s; }
+  .btn-back:hover { color: var(--brown-mid); }
+  .btn-next { background: var(--brown-deep); color: white; border: none; font-family: 'Noto Sans TC', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; padding: 14px 32px; cursor: pointer; transition: all 0.2s; opacity: 0.4; pointer-events: none; }
+  .btn-next.enabled { opacity: 1; pointer-events: all; }
+  .btn-next.enabled:hover { background: var(--terracotta); transform: translateY(-1px); }
+  .sending-screen { display: none; padding-top: 80px; text-align: center; animation: fadeUp 0.4s ease forwards; }
+  .sending-screen.active { display: block; }
+  .sending-title { font-family: 'Noto Serif TC', serif; font-size: 24px; font-weight: 700; color: var(--brown-deep); margin-bottom: 12px; }
+  .sending-sub { font-size: 14px; color: var(--brown-light); line-height: 1.9; }
+  footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 11px; color: var(--brown-light); }
+  @media (max-width: 480px) { .hero { padding: 60px 20px 56px; } }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <p class="hero-eyebrow">家庭支持系統自我檢測</p>
+  <h1>你家現在的狀態，<br><span>是哪一種漏風？</span></h1>
+  <p class="hero-sub">8 個問題，幫你看見那個大家都感覺到、<br>但說不清楚的地方在哪裡。</p>
+  <div class="hero-meta">
+    <span>⏱ 約 3 分鐘</span>
+    <span>✦ 8 題</span>
+    <span>✉ 結果寄到信箱</span>
+  </div>
+</section>
+
+<div class="container">
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-label">
+      <span id="progressText">第 1 題，共 8 題</span>
+      <span id="progressPct">0%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <div class="start-section" id="startSection">
+    <button class="btn-start" onclick="startQuiz()">開始測驗 →</button>
+    <p class="start-note">填完後，個人化結果會送到你的信箱</p>
+  </div>
+
+  <div class="question-section" id="q1">
+    <p class="q-number">題目 01 / 08</p>
+    <p class="q-text">孩子遇到麻煩或怪怪的事，他第一個反應通常是？</p>
+    <div class="options">
+      <div class="option" onclick="selectOption(this,'q1','alarm')"><div class="option-radio"></div><span class="option-text">最近行為有點怪，但他不說，我也不確定發生什麼</span></div>
+      <div class="option" onclick="selectOption(this,'q1','solo')"><div class="option-radio"></div><span class="option-text">會找我，但說了一半就停下來，感覺說完也沒用</span></div>
+      <div class="option" onclick="selectOption(this,'q1','silent')"><div class="option-radio"></div><span class="option-text">自己處理，不太說，我也不確定他有沒有在求救</span></div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" style="visibility:hidden">← 上一題</button>
+      <button class="btn-next" id="next-q1" onclick="goNext(1)">下一題 →</button>
+    </div>
+  </div>
+
+  <div class="question-section" id="q2">
+    <p class="q-number">題目 02 / 08</p>
+    <p class="q-text">家裡出了狀況，你和另一半的第一反應通常是？</p>
+    <div class="options">
+      <div class="option" onclick="selectOption(this,'q2','solo')"><div class="option-radio"></div><span class="option-text">我先扛起來，另一半退到旁邊，最後還是我去收尾</span></div>
+      <div class="option" onclick="selectOption(this,'q2','alarm')"><div class="option-radio"></div><span class="option-text">兩個人先找是誰的錯，把問題推給孩子或對方</span></div>
+      <div class="option" onclick="selectOption(this,'q2','silent')"><div class="option-radio"></div><span class="option-text">乾脆不說，怕一開口就變吵架，算了過去就算了</span></div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="goBack(2)">← 上一題</button>
+      <button class="btn-next" id="next-q2" onclick="goNext(2)">下一題 →</button>
+    </div>
+  </div>
+
+  <div class="question-section" id="q3">
+    <p class="q-number">題目 03 / 08</p>
+    <p class="q-text">你上一次跟另一半說出「我覺得我們這樣下去不對」，大約是什麼時候？</p>
+    <div class="options">
+      <div class="option" onclick="selectOption(this,'q3','solo')"><div class="option-radio"></div><span class="option-text">說過，但對方沒有回應，或把話題帶走了</span></div>
+      <div class="option" onclick="selectOption(this,'q3','alarm')"><div class="option-radio"></div><span class="option-text">說過，但變成一場爭吵，最後什麼都沒解決</span></div>
+      <div class="option" onclick="selectOption(this,'q3','silent')"><div class="option-radio"></div><span class="option-text">很久沒說了，或根本想不起來上次是什麼時候</span></div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="goBack(3)">← 上一題</button>
+      <button class="btn-next" id="next-q3" onclick="goNext(3)">下一題 →</button>
+    </div>
+  </div>
+
+  <div class="question-section" id="q4">
+    <p class="q-number">題目 04 / 08</p>
+    <p class="q-text">家裡的情緒通常怎麼消化？</p>
+    <div class="options">
+      <div class="option" onclick="selectOption(this,'q4','silent')"><div class="option-radio"></div><span class="option-text">被消音，沒有人說，時間到了就過去了</span></div>
+      <div class="option" onclick="selectOption(this,'q4','solo')"><div class="option-radio"></div><span class="option-text">我一個人默默消化，不想讓家人覺得我在抱怨</span></div>
+      <div class="option" onclick="selectOption(this,'q4','alarm')"><div class="option-radio"></div><span class="option-text">偶爾會爆出來，爆完之後修復很慢，又繞回原點</span></div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="goBack(4)">← 上一題</button>
+      <button class="btn-next" id="next-q4" onclick="goNext(4)">下一題 →</button>
+    </div>
+  </div>
+
+  <div class="question-section" id="q5">
+    <p class="q-number">題目 05 / 08</p>
+    <p class="q-text">當你覺得很累、需要有人支持，你通常怎麼辦？</p>
+    <div class="options">
+      <div class="option" onclick="selectOption(this,'q5','solo')"><div class="option-radio"></div><span class="option-text">自己撐過去，不習慣說出來，說了也不知道誰能接</span></div>
+      <div class="option" onclick="selectOption(this,'q5','silent')"><div class="option-radio"></div><span class="option-text">找外面的朋友說，不在家裡說，怕造成更多麻煩</span></div>
+      <div class="option" onclick="selectOption(this,'q5','alarm')"><div class="option-radio"></div><span class="option-text">說了，但對方接不住，最後還是要我自己去解決</span></div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="goBack(5)">← 上一題</button>
+      <button class="btn-next" id="next-q5" onclick="goNext(5)">下一題 →</button>
+    </div>
+  </div>
+
+  <div class="question-section" id="q6">
+    <p class="q-number">題目 06 / 08</p>
+    <p class="q-text">家裡出了問題，責任通常怎麼分配？</p>
+    <div class="options">
+      <div class="option" onclick="selectOption(this,'q6','alarm')"><div class="option-radio"></div><span class="option-text">有一個人（通常是孩子）變成「被說是原因」的那個</span></div>
+      <div class="option" onclick="selectOption(this,'q6','solo')"><div class="option-radio"></div><span class="option-text">有人默默去收尾，但沒有人問他為什麼要一個人扛</span></div>
+      <div class="option" onclick="selectOption(this,'q6','silent')"><div class="option-radio"></div><span class="option-text">大家都覺得不是自己的問題，最後沒有人承擔</span></div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="goBack(6)">← 上一題</button>
+      <button class="btn-next" id="next-q6" onclick="goNext(6)">下一題 →</button>
+    </div>
+  </div>
+
+  <div class="question-section" id="q7">
+    <p class="q-number">題目 07 / 08</p>
+    <p class="q-text">你有沒有一種感覺：家裡有什麼卡住了，但你說不清楚在哪裡？</p>
+    <div class="options">
+      <div class="option" onclick="selectOption(this,'q7','alarm')"><div class="option-radio"></div><span class="option-text">有，而且已經發生具體的事，我開始擔心下一次</span></div>
+      <div class="option" onclick="selectOption(this,'q7','solo')"><div class="option-radio"></div><span class="option-text">有，我能感覺到，但說出來對方會覺得我在找麻煩</span></div>
+      <div class="option" onclick="selectOption(this,'q7','silent')"><div class="option-radio"></div><span class="option-text">有一點，但大家都沒有提，就當作沒事繼續過</span></div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="goBack(7)">← 上一題</button>
+      <button class="btn-next" id="next-q7" onclick="goNext(7)">下一題 →</button>
+    </div>
+  </div>
+
+  <div class="question-section" id="q8">
+    <p class="q-number">題目 08 / 08</p>
+    <p class="q-text">你現在最想改變的是什麼？</p>
+    <div class="options">
+      <div class="option" onclick="selectOption(this,'q8','alarm')"><div class="option-radio"></div><span class="option-text">讓孩子下次遇到事情，第一個反應是回家來找我</span></div>
+      <div class="option" onclick="selectOption(this,'q8','solo')"><div class="option-radio"></div><span class="option-text">讓我不要再一個人扛，另一半能真正參與進來</span></div>
+      <div class="option" onclick="selectOption(this,'q8','silent')"><div class="option-radio"></div><span class="option-text">讓大人之間能說真話，而不是只剩沉默和指令</span></div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="goBack(8)">← 上一題</button>
+      <button class="btn-next" id="next-q8" onclick="showResult()">看我的結果 →</button>
+    </div>
+  </div>
+
+  <div class="sending-screen" id="sendingScreen">
+    <p class="sending-title">結果正在寄給你 ✓</p>
+    <p class="sending-sub">正在跳轉，請稍候……</p>
+  </div>
+</div>
+
+<footer>© 2025 ｜ 所有內容僅供參考，不取代專業心理諮詢</footer>
+
+<script>
+  const answers = {};
+
+  function getEmailFromURL() {
+    return new URLSearchParams(window.location.search).get('email') || '';
+  }
+
+  function startQuiz() {
+    document.getElementById('startSection').style.display = 'none';
+    document.getElementById('progressWrap').classList.add('visible');
+    showQuestion(1);
+  }
+
+  function showQuestion(n) {
+    document.querySelectorAll('.question-section').forEach(q => q.classList.remove('active'));
+    const el = document.getElementById('q' + n);
+    if (el) { el.classList.add('active'); updateProgress(n); }
+  }
+
+  function updateProgress(n) {
+    const pct = Math.round(((n-1)/8)*100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = '第 ' + n + ' 題，共 8 題';
+    document.getElementById('progressPct').textContent = pct + '%';
+  }
+
+  function selectOption(el, qId, type) {
+    el.closest('.options').querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    answers[qId] = type;
+    const btn = document.getElementById('next-' + qId);
+    if (btn) btn.classList.add('enabled');
+  }
+
+  function goNext(n) {
+    if (!answers['q'+n]) return;
+    showQuestion(n+1);
+  }
+
+  function goBack(n) { showQuestion(n-1); }
+
+  function showResult() {
+    if (!answers['q8']) return;
+    const tally = { alarm:0, solo:0, silent:0 };
+    Object.values(answers).forEach(v => tally[v]++);
+    let result = 'alarm';
+    if (tally.solo >= tally.alarm && tally.solo >= tally.silent) result = 'solo';
+    if (tally.silent > tally.alarm && tally.silent > tally.solo) result = 'silent';
+
+    const urls = {
+      alarm:  'https://yourland.kit.com/0324b8aceb',
+      solo:   'https://yourland.kit.com/9ec59380a5',
+      silent: 'https://yourland.kit.com/7acb3b6974'
+    };
+
+    document.querySelectorAll('.question-section').forEach(q => q.classList.remove('active'));
+    document.getElementById('progressWrap').style.display = 'none';
+    document.getElementById('sendingScreen').classList.add('active');
+
+    const email = getEmailFromURL();
+    const dest = email ? urls[result] + '?email=' + encodeURIComponent(email) : urls[result];
+    setTimeout(() => { window.location.href = dest; }, 1500);
+  }
+</script>
+</body>
+</html>
