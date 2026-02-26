@@ -19,542 +19,83 @@
     --border: #E8DDD4;
     --shadow: rgba(44, 31, 20, 0.08);
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background-color: var(--cream);
-    color: var(--brown-deep);
-    font-family: 'Noto Sans TC', sans-serif;
-    font-weight: 300;
-    line-height: 1.8;
-    min-height: 100vh;
-  }
-
-  /* HERO */
-  .hero {
-    background: var(--warm-white);
-    border-bottom: 1px solid var(--border);
-    padding: 80px 24px 72px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(196,98,45,0.07) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -40px; left: -40px;
-    width: 200px; height: 200px;
-    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-
-  .hero-eyebrow {
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    color: var(--terracotta);
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-
-  .hero h1 {
-    font-family: 'Noto Serif TC', serif;
-    font-size: clamp(26px, 5vw, 44px);
-    font-weight: 700;
-    line-height: 1.4;
-    color: var(--brown-deep);
-    max-width: 680px;
-    margin: 0 auto 24px;
-  }
-
-  .hero h1 span {
-    color: var(--terracotta);
-  }
-
-  .hero-sub {
-    font-size: 15px;
-    color: var(--brown-light);
-    max-width: 480px;
-    margin: 0 auto 40px;
-    line-height: 1.9;
-  }
-
-  .hero-meta {
-    display: inline-flex;
-    gap: 24px;
-    font-size: 12px;
-    color: var(--brown-light);
-    letter-spacing: 0.05em;
-  }
-
-  .hero-meta span {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  /* QUIZ CONTAINER */
-  .container {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 24px 80px;
-  }
-
-  /* PROGRESS */
-  .progress-wrap {
-    padding: 32px 0 0;
-    display: none;
-  }
-
+  body { background-color: var(--cream); color: var(--brown-deep); font-family: 'Noto Sans TC', sans-serif; font-weight: 300; line-height: 1.8; min-height: 100vh; }
+  .hero { background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 80px 24px 72px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(196,98,45,0.07) 0%, transparent 70%); border-radius: 50%; }
+  .hero::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%); border-radius: 50%; }
+  .hero-eyebrow { font-family: 'Noto Sans TC', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 24px; }
+  .hero h1 { font-family: 'Noto Serif TC', serif; font-size: clamp(26px, 5vw, 44px); font-weight: 700; line-height: 1.4; color: var(--brown-deep); max-width: 680px; margin: 0 auto 24px; }
+  .hero h1 span { color: var(--terracotta); }
+  .hero-sub { font-size: 15px; color: var(--brown-light); max-width: 480px; margin: 0 auto 40px; line-height: 1.9; }
+  .hero-meta { display: inline-flex; gap: 24px; font-size: 12px; color: var(--brown-light); letter-spacing: 0.05em; }
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+  .container { max-width: 680px; margin: 0 auto; padding: 0 24px 80px; }
+  .progress-wrap { padding: 32px 0 0; display: none; }
   .progress-wrap.visible { display: block; }
-
-  .progress-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--brown-light);
-    margin-bottom: 8px;
-    letter-spacing: 0.05em;
-  }
-
-  .progress-bar {
-    height: 3px;
-    background: var(--border);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: var(--terracotta);
-    border-radius: 2px;
-    transition: width 0.4s ease;
-    width: 0%;
-  }
-
-  /* START BUTTON */
-  .start-section {
-    padding: 48px 0 0;
-    text-align: center;
-  }
-
-  .btn-start {
-    display: inline-block;
-    background: var(--terracotta);
-    color: white;
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    padding: 18px 48px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn-start::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0);
-    transition: background 0.25s;
-  }
-
-  .btn-start:hover {
-    background: var(--brown-mid);
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(196,98,45,0.25);
-  }
-
-  .start-note {
-    font-size: 12px;
-    color: var(--brown-light);
-    margin-top: 16px;
-    letter-spacing: 0.03em;
-  }
-
-  /* QUESTION CARD */
-  .question-section {
-    display: none;
-    padding-top: 40px;
-    animation: fadeUp 0.4s ease forwards;
-  }
-
+  .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--brown-light); margin-bottom: 8px; letter-spacing: 0.05em; }
+  .progress-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--terracotta); border-radius: 2px; transition: width 0.4s ease; width: 0%; }
+  .start-section { padding: 48px 0 0; text-align: center; }
+  .btn-start { display: inline-block; background: var(--terracotta); color: white; font-family: 'Noto Sans TC', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: 0.05em; padding: 18px 48px; border: none; cursor: pointer; transition: all 0.25s ease; position: relative; overflow: hidden; }
+  .btn-start:hover { background: var(--brown-mid); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(196,98,45,0.25); }
+  .start-note { font-size: 12px; color: var(--brown-light); margin-top: 16px; letter-spacing: 0.03em; }
+  .question-section { display: none; padding-top: 40px; animation: fadeUp 0.4s ease forwards; }
   .question-section.active { display: block; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .q-number {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    color: var(--terracotta);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-
-  .q-text {
-    font-family: 'Noto Serif TC', serif;
-    font-size: clamp(17px, 3vw, 22px);
-    font-weight: 600;
-    line-height: 1.6;
-    color: var(--brown-deep);
-    margin-bottom: 32px;
-  }
-
-  .options {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .option {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 20px 24px;
-    background: var(--warm-white);
-    border: 1.5px solid var(--border);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative;
-  }
-
-  .option:hover {
-    border-color: var(--terracotta-light);
-    background: #FFF8F5;
-    transform: translateX(4px);
-  }
-
-  .option.selected {
-    border-color: var(--terracotta);
-    background: #FFF3EE;
-  }
-
-  .option.selected::after {
-    content: '✓';
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--terracotta);
-    font-size: 14px;
-  }
-
-  .option-radio {
-    width: 18px;
-    height: 18px;
-    border: 1.5px solid var(--border);
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 2px;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .option.selected .option-radio {
-    border-color: var(--terracotta);
-    background: var(--terracotta);
-  }
-
-  .option.selected .option-radio::after {
-    content: '';
-    width: 6px;
-    height: 6px;
-    background: white;
-    border-radius: 50%;
-  }
-
-  .option-text {
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--brown-mid);
-  }
-
-  .q-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-  }
-
-  .btn-back {
-    font-size: 13px;
-    color: var(--brown-light);
-    background: none;
-    border: none;
-    cursor: pointer;
-    letter-spacing: 0.05em;
-    padding: 8px 0;
-    transition: color 0.2s;
-  }
-
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .q-number { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 12px; }
+  .q-text { font-family: 'Noto Serif TC', serif; font-size: clamp(17px, 3vw, 22px); font-weight: 600; line-height: 1.6; color: var(--brown-deep); margin-bottom: 32px; }
+  .options { display: flex; flex-direction: column; gap: 12px; }
+  .option { display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px; background: var(--warm-white); border: 1.5px solid var(--border); cursor: pointer; transition: all 0.2s ease; position: relative; }
+  .option:hover { border-color: var(--terracotta-light); background: #FFF8F5; transform: translateX(4px); }
+  .option.selected { border-color: var(--terracotta); background: #FFF3EE; }
+  .option.selected::after { content: '✓'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: var(--terracotta); font-size: 14px; }
+  .option-radio { width: 18px; height: 18px; border: 1.5px solid var(--border); border-radius: 50%; flex-shrink: 0; margin-top: 2px; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+  .option.selected .option-radio { border-color: var(--terracotta); background: var(--terracotta); }
+  .option.selected .option-radio::after { content: ''; width: 6px; height: 6px; background: white; border-radius: 50%; }
+  .option-text { font-size: 14px; line-height: 1.7; color: var(--brown-mid); }
+  .q-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .btn-back { font-size: 13px; color: var(--brown-light); background: none; border: none; cursor: pointer; letter-spacing: 0.05em; padding: 8px 0; transition: color 0.2s; }
   .btn-back:hover { color: var(--brown-mid); }
-
-  .btn-next {
-    background: var(--brown-deep);
-    color: white;
-    border: none;
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    padding: 14px 32px;
-    cursor: pointer;
-    transition: all 0.2s;
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-  .btn-next.enabled {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .btn-next.enabled:hover {
-    background: var(--terracotta);
-    transform: translateY(-1px);
-  }
-
-  /* RESULT */
-  .result-section {
-    display: none;
-    padding-top: 48px;
-    animation: fadeUp 0.5s ease forwards;
-  }
-
+  .btn-next { background: var(--brown-deep); color: white; border: none; font-family: 'Noto Sans TC', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; padding: 14px 32px; cursor: pointer; transition: all 0.2s; opacity: 0.4; pointer-events: none; }
+  .btn-next.enabled { opacity: 1; pointer-events: all; }
+  .btn-next.enabled:hover { background: var(--terracotta); transform: translateY(-1px); }
+  .result-section { display: none; padding-top: 48px; animation: fadeUp 0.5s ease forwards; }
   .result-section.active { display: block; }
-
-  .result-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 20px;
-    margin-bottom: 28px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-  }
-
-  .result-badge.alarm {
-    background: #FFF0EB;
-    color: var(--terracotta);
-    border: 1px solid #F4C4B4;
-  }
-
-  .result-badge.solo {
-    background: #FFF9EC;
-    color: #A07820;
-    border: 1px solid #EDD890;
-  }
-
-  .result-badge.silent {
-    background: #F2F5F2;
-    color: var(--sage);
-    border: 1px solid #C4D0C6;
-  }
-
-  .result-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: clamp(22px, 4vw, 34px);
-    font-weight: 700;
-    line-height: 1.4;
-    color: var(--brown-deep);
-    margin-bottom: 8px;
-  }
-
-  .result-subtitle {
-    font-size: 14px;
-    color: var(--brown-light);
-    margin-bottom: 32px;
-    letter-spacing: 0.03em;
-  }
-
-  .result-body {
-    background: var(--warm-white);
-    border: 1px solid var(--border);
-    padding: 32px;
-    margin-bottom: 24px;
-  }
-
-  .result-body p {
-    font-size: 14px;
-    line-height: 1.95;
-    color: var(--brown-mid);
-    margin-bottom: 16px;
-  }
-
+  .result-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px; margin-bottom: 28px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; }
+  .result-badge.alarm { background: #FFF0EB; color: var(--terracotta); border: 1px solid #F4C4B4; }
+  .result-badge.solo { background: #FFF9EC; color: #A07820; border: 1px solid #EDD890; }
+  .result-badge.silent { background: #F2F5F2; color: var(--sage); border: 1px solid #C4D0C6; }
+  .result-title { font-family: 'Noto Serif TC', serif; font-size: clamp(22px, 4vw, 34px); font-weight: 700; line-height: 1.4; color: var(--brown-deep); margin-bottom: 8px; }
+  .result-subtitle { font-size: 14px; color: var(--brown-light); margin-bottom: 32px; letter-spacing: 0.03em; }
+  .result-body { background: var(--warm-white); border: 1px solid var(--border); padding: 32px; margin-bottom: 24px; }
+  .result-body p { font-size: 14px; line-height: 1.95; color: var(--brown-mid); margin-bottom: 16px; }
   .result-body p:last-child { margin-bottom: 0; }
+  .result-highlight { border-left: 3px solid var(--terracotta); padding-left: 20px; margin: 24px 0; font-family: 'Noto Serif TC', serif; font-size: 15px; color: var(--brown-deep); line-height: 1.8; }
+  .kit-embed-wrapper { background: var(--warm-white); border: 1.5px dashed var(--terracotta-light); padding: 32px 24px 24px; margin-bottom: 32px; text-align: center; border-radius: 4px; }
+  .kit-embed-wrapper h4 { font-family: 'Noto Serif TC', serif; font-size: 18px; font-weight: 600; color: var(--brown-deep); margin-bottom: 8px; }
+  .kit-embed-wrapper p { font-size: 13px; color: var(--brown-mid); margin-bottom: 12px; }
+  .result-cta-box { background: var(--brown-deep); color: white; padding: 40px 32px; text-align: center; position: relative; overflow: hidden; }
+  .result-cta-box::before { content: ''; position: absolute; top: -40px; right: -40px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(196,98,45,0.2) 0%, transparent 70%); border-radius: 50%; }
+  .result-cta-box h3 { font-family: 'Noto Serif TC', serif; font-size: 20px; font-weight: 600; margin-bottom: 12px; line-height: 1.5; }
+  .result-cta-box p { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 28px; line-height: 1.8; }
+  .btn-cta { display: inline-block; background: var(--terracotta); color: white; font-family: 'Noto Sans TC', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.08em; padding: 16px 40px; border: none; cursor: pointer; text-decoration: none; transition: all 0.25s ease; }
+  .btn-cta:hover { background: var(--terracotta-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,98,45,0.35); }
+  .divider { height: 1px; background: var(--border); margin: 40px 0; }
+  .about-strip { padding: 40px 0; display: flex; gap: 24px; align-items: flex-start; }
+  .about-avatar { width: 56px; height: 56px; background: var(--border); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Noto Serif TC', serif; font-size: 20px; color: var(--brown-light); }
+  .about-text { font-size: 13px; color: var(--brown-mid); line-height: 1.85; }
+  .about-name { font-weight: 500; color: var(--brown-deep); margin-bottom: 6px; font-size: 14px; }
+  footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 11px; color: var(--brown-light); letter-spacing: 0.05em; }
+  @media (max-width: 480px) { .hero { padding: 60px 20px 56px; } .result-body { padding: 24px 20px; } .kit-embed-wrapper { padding: 24px 16px; } .result-cta-box { padding: 32px 20px; } .about-strip { flex-direction: column; } }
 
-  .result-highlight {
-    border-left: 3px solid var(--terracotta);
-    padding-left: 20px;
-    margin: 24px 0;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 15px;
-    color: var(--brown-deep);
-    line-height: 1.8;
-  }
-
-  /* KIT 表單區塊設計 */
-  .kit-embed-wrapper {
-    background: var(--warm-white);
-    border: 1.5px dashed var(--terracotta-light);
-    padding: 32px 24px 24px;
-    margin-bottom: 32px;
-    text-align: center;
-    border-radius: 4px;
-  }
-
-  .kit-embed-wrapper h4 {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--brown-deep);
-    margin-bottom: 8px;
-  }
-
-  .kit-embed-wrapper p {
-    font-size: 13px;
-    color: var(--brown-mid);
-    margin-bottom: 12px;
-  }
-
-  .result-cta-box {
-    background: var(--brown-deep);
-    color: white;
-    padding: 40px 32px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .result-cta-box::before {
-    content: '';
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 150px; height: 150px;
-    background: radial-gradient(circle, rgba(196,98,45,0.2) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-
-  .result-cta-box h3 {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    line-height: 1.5;
-  }
-
-  .result-cta-box p {
-    font-size: 13px;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 28px;
-    line-height: 1.8;
-  }
-
-  .btn-cta {
-    display: inline-block;
-    background: var(--terracotta);
-    color: white;
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    padding: 16px 40px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.25s ease;
-  }
-
-  .btn-cta:hover {
-    background: var(--terracotta-light);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(196,98,45,0.35);
-  }
-
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 40px 0;
-  }
-
-  /* ABOUT */
-  .about-strip {
-    padding: 40px 0;
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
-  }
-
-  .about-avatar {
-    width: 56px;
-    height: 56px;
-    background: var(--border);
-    border-radius: 50%;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 20px;
-    color: var(--brown-light);
-  }
-
-  .about-text {
-    font-size: 13px;
-    color: var(--brown-mid);
-    line-height: 1.85;
-  }
-
-  .about-name {
-    font-weight: 500;
-    color: var(--brown-deep);
-    margin-bottom: 6px;
-    font-size: 14px;
-  }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 24px;
-    text-align: center;
-    font-size: 11px;
-    color: var(--brown-light);
-    letter-spacing: 0.05em;
-  }
-
-  /* MOBILE */
-  @media (max-width: 480px) {
-    .hero { padding: 60px 20px 56px; }
-    .result-body { padding: 24px 20px; }
-    .kit-embed-wrapper { padding: 24px 16px; }
-    .result-cta-box { padding: 32px 20px; }
-    .about-strip { flex-direction: column; }
-  }
+  /* 覆蓋 Kit 表單樣式 */
+  .kit-embed-wrapper .formkit-form { max-width: 100% !important; }
+  .kit-embed-wrapper .formkit-input { font-family: 'Noto Sans TC', sans-serif !important; font-size: 14px !important; border-radius: 0 !important; border: 1.5px solid #E8DDD4 !important; padding: 14px 16px !important; color: #2C1F14 !important; }
+  .kit-embed-wrapper .formkit-input::placeholder { color: #A0745A !important; opacity: 1 !important; }
+  .kit-embed-wrapper .formkit-submit { font-family: 'Noto Sans TC', sans-serif !important; background-color: #C4622D !important; border-radius: 0 !important; font-size: 14px !important; font-weight: 500 !important; letter-spacing: 0.08em !important; }
+  .kit-embed-wrapper .formkit-submit:hover { background-color: #5C3D2E !important; }
+  .kit-embed-wrapper .formkit-powered-by-convertkit-container { display: none !important; }
 </style>
 </head>
 <body>
@@ -571,15 +112,12 @@
 </section>
 
 <div class="container">
-
   <div class="progress-wrap" id="progressWrap">
     <div class="progress-label">
       <span id="progressText">第 1 題，共 8 題</span>
       <span id="progressPct">0%</span>
     </div>
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
   </div>
 
   <div class="start-section" id="startSection">
@@ -591,18 +129,9 @@
     <p class="q-number">題目 01 / 08</p>
     <p class="q-text">孩子遇到麻煩或怪怪的事，他第一個反應通常是？</p>
     <div class="options">
-      <div class="option" onclick="selectOption(this, 'q1', 'alarm')">
-        <div class="option-radio"></div>
-        <span class="option-text">最近行為有點怪，但他不說，我也不確定發生什麼</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q1', 'solo')">
-        <div class="option-radio"></div>
-        <span class="option-text">會找我，但說了一半就停下來，感覺說完也沒用</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q1', 'silent')">
-        <div class="option-radio"></div>
-        <span class="option-text">自己處理，不太說，我也不確定他有沒有在求救</span>
-      </div>
+      <div class="option" onclick="selectOption(this, 'q1', 'alarm')"><div class="option-radio"></div><span class="option-text">最近行為有點怪，但他不說，我也不確定發生什麼</span></div>
+      <div class="option" onclick="selectOption(this, 'q1', 'solo')"><div class="option-radio"></div><span class="option-text">會找我，但說了一半就停下來，感覺說完也沒用</span></div>
+      <div class="option" onclick="selectOption(this, 'q1', 'silent')"><div class="option-radio"></div><span class="option-text">自己處理，不太說，我也不確定他有沒有在求救</span></div>
     </div>
     <div class="q-nav">
       <button class="btn-back" onclick="goBack(1)" style="visibility:hidden">← 上一題</button>
@@ -614,18 +143,9 @@
     <p class="q-number">題目 02 / 08</p>
     <p class="q-text">家裡出了狀況，你和另一半的第一反應通常是？</p>
     <div class="options">
-      <div class="option" onclick="selectOption(this, 'q2', 'solo')">
-        <div class="option-radio"></div>
-        <span class="option-text">我先扛起來，另一半退到旁邊，最後還是我去收尾</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q2', 'alarm')">
-        <div class="option-radio"></div>
-        <span class="option-text">兩個人先找是誰的錯，把問題推給孩子或對方</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q2', 'silent')">
-        <div class="option-radio"></div>
-        <span class="option-text">乾脆不說，怕一開口就變吵架，算了過去就算了</span>
-      </div>
+      <div class="option" onclick="selectOption(this, 'q2', 'solo')"><div class="option-radio"></div><span class="option-text">我先扛起來，另一半退到旁邊，最後還是我去收尾</span></div>
+      <div class="option" onclick="selectOption(this, 'q2', 'alarm')"><div class="option-radio"></div><span class="option-text">兩個人先找是誰的錯，把問題推給孩子或對方</span></div>
+      <div class="option" onclick="selectOption(this, 'q2', 'silent')"><div class="option-radio"></div><span class="option-text">乾脆不說，怕一開口就變吵架，算了過去就算了</span></div>
     </div>
     <div class="q-nav">
       <button class="btn-back" onclick="goBack(2)">← 上一題</button>
@@ -637,18 +157,9 @@
     <p class="q-number">題目 03 / 08</p>
     <p class="q-text">你上一次跟另一半說出「我覺得我們這樣下去不對」，大約是什麼時候？</p>
     <div class="options">
-      <div class="option" onclick="selectOption(this, 'q3', 'solo')">
-        <div class="option-radio"></div>
-        <span class="option-text">說過，但對方沒有回應，或把話題帶走了</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q3', 'alarm')">
-        <div class="option-radio"></div>
-        <span class="option-text">說過，但變成一場爭吵，最後什麼都沒解決</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q3', 'silent')">
-        <div class="option-radio"></div>
-        <span class="option-text">很久沒說了，或根本想不起來上次是什麼時候</span>
-      </div>
+      <div class="option" onclick="selectOption(this, 'q3', 'solo')"><div class="option-radio"></div><span class="option-text">說過，但對方沒有回應，或把話題帶走了</span></div>
+      <div class="option" onclick="selectOption(this, 'q3', 'alarm')"><div class="option-radio"></div><span class="option-text">說過，但變成一場爭吵，最後什麼都沒解決</span></div>
+      <div class="option" onclick="selectOption(this, 'q3', 'silent')"><div class="option-radio"></div><span class="option-text">很久沒說了，或根本想不起來上次是什麼時候</span></div>
     </div>
     <div class="q-nav">
       <button class="btn-back" onclick="goBack(3)">← 上一題</button>
@@ -660,18 +171,9 @@
     <p class="q-number">題目 04 / 08</p>
     <p class="q-text">家裡的情緒通常怎麼消化？</p>
     <div class="options">
-      <div class="option" onclick="selectOption(this, 'q4', 'silent')">
-        <div class="option-radio"></div>
-        <span class="option-text">被消音，沒有人說，時間到了就過去了</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q4', 'solo')">
-        <div class="option-radio"></div>
-        <span class="option-text">我一個人默默消化，不想讓家人覺得我在抱怨</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q4', 'alarm')">
-        <div class="option-radio"></div>
-        <span class="option-text">偶爾會爆出來，爆完之後修復很慢，又繞回原點</span>
-      </div>
+      <div class="option" onclick="selectOption(this, 'q4', 'silent')"><div class="option-radio"></div><span class="option-text">被消音，沒有人說，時間到了就過去了</span></div>
+      <div class="option" onclick="selectOption(this, 'q4', 'solo')"><div class="option-radio"></div><span class="option-text">我一個人默默消化，不想讓家人覺得我在抱怨</span></div>
+      <div class="option" onclick="selectOption(this, 'q4', 'alarm')"><div class="option-radio"></div><span class="option-text">偶爾會爆出來，爆完之後修復很慢，又繞回原點</span></div>
     </div>
     <div class="q-nav">
       <button class="btn-back" onclick="goBack(4)">← 上一題</button>
@@ -683,18 +185,9 @@
     <p class="q-number">題目 05 / 08</p>
     <p class="q-text">當你覺得很累、需要有人支持，你通常怎麼辦？</p>
     <div class="options">
-      <div class="option" onclick="selectOption(this, 'q5', 'solo')">
-        <div class="option-radio"></div>
-        <span class="option-text">自己撐過去，不習慣說出來，說了也不知道誰能接</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q5', 'silent')">
-        <div class="option-radio"></div>
-        <span class="option-text">找外面的朋友說，不在家裡說，怕造成更多麻煩</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q5', 'alarm')">
-        <div class="option-radio"></div>
-        <span class="option-text">說了，但對方接不住，最後還是要我自己去解決</span>
-      </div>
+      <div class="option" onclick="selectOption(this, 'q5', 'solo')"><div class="option-radio"></div><span class="option-text">自己撐過去，不習慣說出來，說了也不知道誰能接</span></div>
+      <div class="option" onclick="selectOption(this, 'q5', 'silent')"><div class="option-radio"></div><span class="option-text">找外面的朋友說，不在家裡說，怕造成更多麻煩</span></div>
+      <div class="option" onclick="selectOption(this, 'q5', 'alarm')"><div class="option-radio"></div><span class="option-text">說了，但對方接不住，最後還是要我自己去解決</span></div>
     </div>
     <div class="q-nav">
       <button class="btn-back" onclick="goBack(5)">← 上一題</button>
@@ -706,18 +199,9 @@
     <p class="q-number">題目 06 / 08</p>
     <p class="q-text">家裡出了問題，責任通常怎麼分配？</p>
     <div class="options">
-      <div class="option" onclick="selectOption(this, 'q6', 'alarm')">
-        <div class="option-radio"></div>
-        <span class="option-text">有一個人（通常是孩子）變成「被說是原因」的那個</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q6', 'solo')">
-        <div class="option-radio"></div>
-        <span class="option-text">有人默默去收尾，但沒有人問他為什麼要一個人扛</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q6', 'silent')">
-        <div class="option-radio"></div>
-        <span class="option-text">大家都覺得不是自己的問題，最後沒有人承擔</span>
-      </div>
+      <div class="option" onclick="selectOption(this, 'q6', 'alarm')"><div class="option-radio"></div><span class="option-text">有一個人（通常是孩子）變成「被說是原因」的那個</span></div>
+      <div class="option" onclick="selectOption(this, 'q6', 'solo')"><div class="option-radio"></div><span class="option-text">有人默默去收尾，但沒有人問他為什麼要一個人扛</span></div>
+      <div class="option" onclick="selectOption(this, 'q6', 'silent')"><div class="option-radio"></div><span class="option-text">大家都覺得不是自己的問題，最後沒有人承擔</span></div>
     </div>
     <div class="q-nav">
       <button class="btn-back" onclick="goBack(6)">← 上一題</button>
@@ -729,18 +213,9 @@
     <p class="q-number">題目 07 / 08</p>
     <p class="q-text">你有沒有一種感覺：家裡有什麼卡住了，但你說不清楚在哪裡？</p>
     <div class="options">
-      <div class="option" onclick="selectOption(this, 'q7', 'alarm')">
-        <div class="option-radio"></div>
-        <span class="option-text">有，而且已經發生具體的事，我開始擔心下一次</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q7', 'solo')">
-        <div class="option-radio"></div>
-        <span class="option-text">有，我能感覺到，但說出來對方會覺得我在找麻煩</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q7', 'silent')">
-        <div class="option-radio"></div>
-        <span class="option-text">有一點，但大家都沒有提，就當作沒事繼續過</span>
-      </div>
+      <div class="option" onclick="selectOption(this, 'q7', 'alarm')"><div class="option-radio"></div><span class="option-text">有，而且已經發生具體的事，我開始擔心下一次</span></div>
+      <div class="option" onclick="selectOption(this, 'q7', 'solo')"><div class="option-radio"></div><span class="option-text">有，我能感覺到，但說出來對方會覺得我在找麻煩</span></div>
+      <div class="option" onclick="selectOption(this, 'q7', 'silent')"><div class="option-radio"></div><span class="option-text">有一點，但大家都沒有提，就當作沒事繼續過</span></div>
     </div>
     <div class="q-nav">
       <button class="btn-back" onclick="goBack(7)">← 上一題</button>
@@ -752,18 +227,9 @@
     <p class="q-number">題目 08 / 08</p>
     <p class="q-text">你現在最想改變的是什麼？</p>
     <div class="options">
-      <div class="option" onclick="selectOption(this, 'q8', 'alarm')">
-        <div class="option-radio"></div>
-        <span class="option-text">讓孩子下次遇到事情，第一個反應是回家來找我</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q8', 'solo')">
-        <div class="option-radio"></div>
-        <span class="option-text">讓我不要再一個人扛，另一半能真正參與進來</span>
-      </div>
-      <div class="option" onclick="selectOption(this, 'q8', 'silent')">
-        <div class="option-radio"></div>
-        <span class="option-text">讓大人之間能說真話，而不是只剩沉默和指令</span>
-      </div>
+      <div class="option" onclick="selectOption(this, 'q8', 'alarm')"><div class="option-radio"></div><span class="option-text">讓孩子下次遇到事情，第一個反應是回家來找我</span></div>
+      <div class="option" onclick="selectOption(this, 'q8', 'solo')"><div class="option-radio"></div><span class="option-text">讓我不要再一個人扛，另一半能真正參與進來</span></div>
+      <div class="option" onclick="selectOption(this, 'q8', 'silent')"><div class="option-radio"></div><span class="option-text">讓大人之間能說真話，而不是只剩沉默和指令</span></div>
     </div>
     <div class="q-nav">
       <button class="btn-back" onclick="goBack(8)">← 上一題</button>
@@ -771,25 +237,23 @@
     </div>
   </div>
 
+  <!-- 警報型 -->
   <div class="result-section" id="result-alarm">
     <div class="result-badge alarm">🔴 &nbsp;警報型</div>
     <p class="result-title">你家的警報器<br>已經在響了</p>
     <p class="result-subtitle">孩子正在用行為替你說一件你還沒看清楚的事</p>
-
     <div class="result-body">
       <p>你答題的方向顯示：家裡不只是「哪裡漏風」，而是訊號已經出現了。孩子的行為、那些讓你「覺得怪怪的」時刻，都不是偶然——它們是系統在說話。</p>
       <div class="result-highlight">「孩子的問題，常常是家庭系統的警報器。警報響了，修的不應該只是孩子，而是把堵住的管道找出來。」</div>
       <p>最危險的不是問題本身，而是等到下一次爆炸才發現：中間明明有那麼多可以停下來的地方。</p>
       <p>你現在最需要的，不是一套說話技巧，而是有人幫你從外面把這張圖看清楚：哪裡卡住了，下一步先動哪裡。</p>
     </div>
-
     <div class="kit-embed-wrapper">
       <h4>📥 獲取完整分析與解方</h4>
       <p>輸入 Email，我會把這份「警報型」的詳細應對指南寄給你，方便你隨時保留查看。</p>
       <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-      <form action="https://app.kit.com/forms/9135907/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9135907" data-uid="6090e6286d" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800"><div data-style="clean"><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;" aria-label="Email Address" placeholder="Email Address" required="" type="email"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Subscribe</span></button></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow">Built with Kit</a></div></div><style>.formkit-form[data-uid="6090e6286d"] *{box-sizing:border-box;}.formkit-form[data-uid="6090e6286d"]{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.formkit-form[data-uid="6090e6286d"] legend{border:none;font-size:inherit;margin-bottom:10px;padding:0;position:relative;display:table;}.formkit-form[data-uid="6090e6286d"] fieldset{border:0;padding:0.01em 0 0 0;margin:0;min-width:0;}.formkit-form[data-uid="6090e6286d"] body:not(:-moz-handler-blocked) fieldset{display:table-cell;}.formkit-form[data-uid="6090e6286d"] h1,.formkit-form[data-uid="6090e6286d"] h2,.formkit-form[data-uid="6090e6286d"] h3,.formkit-form[data-uid="6090e6286d"] h4,.formkit-form[data-uid="6090e6286d"] h5,.formkit-form[data-uid="6090e6286d"] h6{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="6090e6286d"] h2{font-size:1.5em;margin:1em 0;}.formkit-form[data-uid="6090e6286d"] h3{font-size:1.17em;margin:1em 0;}.formkit-form[data-uid="6090e6286d"] p{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="6090e6286d"] ol:not([template-default]),.formkit-form[data-uid="6090e6286d"] ul:not([template-default]),.formkit-form[data-uid="6090e6286d"] blockquote:not([template-default]){text-align:left;}.formkit-form[data-uid="6090e6286d"] p:not([template-default]),.formkit-form[data-uid="6090e6286d"] hr:not([template-default]),.formkit-form[data-uid="6090e6286d"] blockquote:not([template-default]),.formkit-form[data-uid="6090e6286d"] ol:not([template-default]),.formkit-form[data-uid="6090e6286d"] ul:not([template-default]){color:inherit;font-style:initial;}.formkit-form[data-uid="6090e6286d"] .ordered-list,.formkit-form[data-uid="6090e6286d"] .unordered-list{list-style-position:outside !important;padding-left:1em;}.formkit-form[data-uid="6090e6286d"] .list-item{padding-left:0;}.formkit-form[data-uid="6090e6286d"][data-format="modal"]{display:none;}.formkit-form[data-uid="6090e6286d"][data-format="slide in"]{display:none;}.formkit-form[data-uid="6090e6286d"][data-format="sticky bar"]{display:none;}.formkit-sticky-bar .formkit-form[data-uid="6090e6286d"][data-format="sticky bar"]{display:block;}.formkit-form[data-uid="6090e6286d"] .formkit-input,.formkit-form[data-uid="6090e6286d"] .formkit-select,.formkit-form[data-uid="6090e6286d"] .formkit-checkboxes{width:100%;}.formkit-form[data-uid="6090e6286d"] .formkit-button,.formkit-form[data-uid="6090e6286d"] .formkit-submit{border:0;border-radius:5px;color:#ffffff;cursor:pointer;display:inline-block;text-align:center;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:15px;overflow:hidden;padding:0;position:relative;vertical-align:middle;}.formkit-form[data-uid="6090e6286d"] .formkit-button:hover,.formkit-form[data-uid="6090e6286d"] .formkit-submit:hover,.formkit-form[data-uid="6090e6286d"] .formkit-button:focus,.formkit-form[data-uid="6090e6286d"] .formkit-submit:focus{outline:none;}.formkit-form[data-uid="6090e6286d"] .formkit-button:hover > span,.formkit-form[data-uid="6090e6286d"] .formkit-submit:hover > span,.formkit-form[data-uid="6090e6286d"] .formkit-button:focus > span,.formkit-form[data-uid="6090e6286d"] .formkit-submit:focus > span{background-color:rgba(0,0,0,0.1);}.formkit-form[data-uid="6090e6286d"] .formkit-button > span,.formkit-form[data-uid="6090e6286d"] .formkit-submit > span{display:block;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;padding:12px 24px;}.formkit-form[data-uid="6090e6286d"] .formkit-input{background:#ffffff;font-size:15px;padding:12px;border:1px solid #e3e3e3;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;line-height:1.4;margin:0;-webkit-transition:border-color ease-out 300ms;transition:border-color ease-out 300ms;}.formkit-form[data-uid="6090e6286d"] .formkit-input:focus{outline:none;border-color:#1677be;-webkit-transition:border-color ease 300ms;transition:border-color ease 300ms;}.formkit-form[data-uid="6090e6286d"] .formkit-input::-webkit-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="6090e6286d"] .formkit-input::-moz-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="6090e6286d"] .formkit-input:-ms-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="6090e6286d"] .formkit-input::placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="6090e6286d"] [data-group="dropdown"]{position:relative;display:inline-block;width:100%;}.formkit-form[data-uid="6090e6286d"] [data-group="dropdown"]::before{content:"";top:calc(50% - 2.5px);right:10px;position:absolute;pointer-events:none;border-color:#4f4f4f transparent transparent transparent;border-style:solid;border-width:6px 6px 0 6px;height:0;width:0;z-index:999;}.formkit-form[data-uid="6090e6286d"] [data-group="dropdown"] select{height:auto;width:100%;cursor:pointer;color:#333333;line-height:1.4;margin-bottom:0;padding:0 6px;-webkit-appearance:none;-moz-appearance:none;appearance:none;font-size:15px;padding:12px;padding-right:25px;border:1px solid #e3e3e3;background:#ffffff;}.formkit-form[data-uid="6090e6286d"] [data-group="dropdown"] select:focus{outline:none;}.formkit-form[data-uid="6090e6286d"] [data-group="checkboxes"]{text-align:left;margin:0;}.formkit-form[data-uid="6090e6286d"] [data-group="checkboxes"] [data-group="checkbox"]{margin-bottom:10px;}.formkit-form[data-uid="6090e6286d"] [data-group="checkboxes"] [data-group="checkbox"] *{cursor:pointer;}.formkit-form[data-uid="6090e6286d"] [data-group="checkboxes"] [data-group="checkbox"]:last-of-type{margin-bottom:0;}.formkit-form[data-uid="6090e6286d"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]{display:none;}.formkit-form[data-uid="6090e6286d"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"] + label::after{content:none;}.formkit-form[data-uid="6090e6286d"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::after{border-color:#ffffff;content:"";}.formkit-form[data-uid="6090e6286d"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::before{background:#10bf7a;border-color:#10bf7a;}.formkit-form[data-uid="6090e6286d"] [data-group="checkboxes"] [data-group="checkbox"] label{position:relative;display:inline-block;padding-left:28px;}.formkit-form[data-uid="6090e6286d"] [data-group="checkboxes"] [data-group="checkbox"] label::before,.formkit-form[data-uid="6090e6286d"] [data-group="checkboxes"] [data-group="checkbox"] label::after{position:absolute;content:"";display:inline-block;}.formkit-form[data-uid="6090e6286d"] [data-group="checkboxes"] [data-group="checkbox"] label::before{height:16px;width:16px;border:1px solid #e3e3e3;background:#ffffff;left:0px;top:3px;}.formkit-form[data-uid="6090e6286d"] [data-group="checkboxes"] [data-group="checkbox"] label::after{height:4px;width:8px;border-left:2px solid #4d4d4d;border-bottom:2px solid #4d4d4d;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);left:4px;top:8px;}.formkit-form[data-uid="6090e6286d"] .formkit-alert{background:#f9fafb;border:1px solid #e3e3e3;border-radius:5px;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;list-style:none;margin:25px auto;padding:12px;text-align:center;width:100%;}.formkit-form[data-uid="6090e6286d"] .formkit-alert:empty{display:none;}.formkit-form[data-uid="6090e6286d"] .formkit-alert-success{background:#d3fbeb;border-color:#10bf7a;color:#0c905c;}.formkit-form[data-uid="6090e6286d"] .formkit-alert-error{background:#fde8e2;border-color:#f2643b;color:#ea4110;}.formkit-form[data-uid="6090e6286d"] .formkit-spinner{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:0px;width:0px;margin:0 auto;position:absolute;top:0;left:0;right:0;width:0px;overflow:hidden;text-align:center;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;}.formkit-form[data-uid="6090e6286d"] .formkit-spinner > div{margin:auto;width:12px;height:12px;background-color:#fff;opacity:0.3;border-radius:100%;display:inline-block;-webkit-animation:formkit-bouncedelay-formkit-form-data-uid-6090e6286d- 1.4s infinite ease-in-out both;animation:formkit-bouncedelay-formkit-form-data-uid-6090e6286d- 1.4s infinite ease-in-out both;}.formkit-form[data-uid="6090e6286d"] .formkit-spinner > div:nth-child(1){-webkit-animation-delay:-0.32s;animation-delay:-0.32s;}.formkit-form[data-uid="6090e6286d"] .formkit-spinner > div:nth-child(2){-webkit-animation-delay:-0.16s;animation-delay:-0.16s;}.formkit-form[data-uid="6090e6286d"] .formkit-submit[data-active] .formkit-spinner{opacity:1;height:100%;width:50px;}.formkit-form[data-uid="6090e6286d"] .formkit-submit[data-active] .formkit-spinner ~ span{opacity:0;}.formkit-form[data-uid="6090e6286d"] .formkit-powered-by[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="6090e6286d"] .formkit-powered-by-convertkit-container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;margin:10px 0;position:relative;}.formkit-form[data-uid="6090e6286d"] .formkit-powered-by-convertkit-container[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="6090e6286d"] .formkit-powered-by-convertkit{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ffffff;border-radius:9px;color:#3d3d3d;cursor:pointer;display:block;height:36px;margin:0 auto;opacity:0.95;padding:0;-webkit-text-decoration:none;text-decoration:none;text-indent:100%;-webkit-transition:ease-in-out all 200ms;transition:ease-in-out all 200ms;white-space:nowrap;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:157px;background-repeat:no-repeat;background-position:center;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='133' height='36' viewBox='0 0 133 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.861 25.5C0.735 25.5 0.651 25.416 0.651 25.29V10.548C0.651 10.422 0.735 10.338 0.861 10.338H6.279C9.072 10.338 10.668 11.451 10.668 13.824C10.668 15.819 9.219 16.932 8.001 17.226C7.707 17.268 7.707 17.625 8.022 17.688C9.912 18.108 11.088 19.116 11.088 21.321C11.088 23.715 9.429 25.5 6.426 25.5H0.861ZM5.397 23.085C6.825 23.085 7.518 22.224 7.518 21.006C7.518 19.683 6.825 18.948 5.397 18.948H4.2V23.085H5.397ZM5.313 16.617C6.51 16.617 7.245 15.945 7.245 14.601C7.245 13.383 6.51 12.753 5.25 12.753H4.2V16.617H5.313ZM17.9758 23.883C17.9758 23.568 17.6608 23.505 17.5348 23.799C17.0308 24.954 16.1698 25.731 14.5528 25.731C12.8728 25.731 12.0958 24.471 12.0958 22.707V14.937C12.0958 14.811 12.1798 14.727 12.3058 14.727H15.2248C15.3508 14.727 15.4348 14.811 15.4348 14.937V21.657C15.4348 22.581 15.7708 23.022 16.4638 23.022C17.1778 23.022 17.6188 22.581 17.6188 21.657V14.937C17.6188 14.811 17.7028 14.727 17.8288 14.727H20.7478C20.8738 14.727 20.9578 14.811 20.9578 14.937V25.29C20.9578 25.416 20.8738 25.5 20.7478 25.5H18.1858C18.0598 25.5 17.9758 25.416 17.9758 25.29V23.883ZM25.6141 25.29C25.6141 25.416 25.5301 25.5 25.4041 25.5H22.4851C22.3591 25.5 22.2751 25.416 22.2751 25.29V14.937C22.2751 14.811 22.3591 14.727 22.4851 14.727H25.4041C25.5301 14.727 25.6141 14.811 25.6141 14.937V25.29ZM23.9131 13.74C22.8001 13.74 22.0441 12.942 22.0441 11.934C22.0441 10.926 22.8001 10.107 23.9131 10.107C25.0051 10.107 25.7611 10.926 25.7611 11.934C25.7611 12.942 25.0051 13.74 23.9131 13.74ZM26.7883 10.548C26.7883 10.422 26.8723 10.338 26.9983 10.338H29.9173C30.0433 10.338 30.1273 10.422 30.1273 10.548V22.056C30.1273 22.749 30.2533 23.085 30.8203 23.085C31.0093 23.085 31.1983 23.043 31.3663 23.001C31.5133 22.959 31.6183 22.959 31.6183 23.127V25.059C31.6183 25.164 31.5763 25.269 31.4923 25.311C30.9673 25.521 30.2953 25.71 29.5813 25.71C27.7123 25.71 26.7883 24.639 26.7883 22.476V10.548ZM32.4237 14.727C32.8227 14.727 32.9277 14.538 32.9697 14.055L33.1167 12.039C33.1167 11.913 33.2217 11.829 33.3477 11.829H35.8887C36.0147 11.829 36.0987 11.913 36.0987 12.039V14.517C36.0987 14.643 36.1827 14.727 36.3087 14.727H38.2827C38.4087 14.727 38.4927 14.811 38.4927 14.937V16.659C38.4927 16.785 38.4087 16.869 38.2827 16.869H36.0777V22.056C36.0777 22.875 36.5397 23.085 37.0647 23.085C37.4847 23.085 37.9467 22.938 38.3247 22.707C38.4717 22.623 38.5767 22.665 38.5767 22.833V24.828C38.5767 24.933 38.5347 25.017 38.4507 25.08C37.8417 25.458 36.9807 25.71 36.0357 25.71C34.2927 25.71 32.7387 24.912 32.7387 22.476V16.869H31.8567C31.7307 16.869 31.6467 16.785 31.6467 16.659V14.937C31.6467 14.811 31.7307 14.727 31.8567 14.727H32.4237ZM51.3808 14.727C51.5068 14.727 51.5908 14.79 51.6118 14.916L52.3888 19.851L52.5778 21.174C52.6198 21.468 52.9558 21.468 52.9768 21.174C53.0398 20.712 53.0818 20.271 53.1658 19.83L53.8798 14.916C53.9008 14.79 53.9848 14.727 54.1108 14.727H56.6728C56.8198 14.727 56.8828 14.811 56.8618 14.958L54.6778 25.311C54.6568 25.437 54.5728 25.5 54.4468 25.5H51.3178C51.1918 25.5 51.1078 25.437 51.0868 25.311L50.1208 20.082L49.8898 18.633C49.8688 18.444 49.6588 18.444 49.6378 18.633L49.4068 20.103L48.5458 25.311C48.5248 25.437 48.4408 25.5 48.3148 25.5H45.2068C45.0808 25.5 44.9968 25.437 44.9758 25.311L42.8128 14.958C42.7918 14.811 42.8548 14.727 43.0018 14.727H45.9628C46.0888 14.727 46.1728 14.79 46.1938 14.916L46.9288 19.83C47.0128 20.271 47.0758 20.754 47.1388 21.195C47.2018 21.51 47.4748 21.531 47.5378 21.195L47.7478 19.872L48.6088 14.916C48.6298 14.79 48.7138 14.727 48.8398 14.727H51.3808ZM61.1582 25.29C61.1582 25.416 61.0742 25.5 60.9482 25.5H58.0292C57.9032 25.5 57.8192 25.416 57.8192 25.29V14.937C57.8192 14.811 57.9032 14.727 58.0292 14.727H60.9482C61.0742 14.727 61.1582 14.811 61.1582 14.937V25.29ZM59.4572 13.74C58.3442 13.74 57.5882 12.942 57.5882 11.934C57.5882 10.926 58.3442 10.107 59.4572 10.107C60.5492 10.107 61.3052 10.926 61.3052 11.934C61.3052 12.942 60.5492 13.74 59.4572 13.74ZM62.8154 14.727C63.2144 14.727 63.3194 14.538 63.3614 14.055L63.5084 12.039C63.5084 11.913 63.6134 11.829 63.7394 11.829H66.2804C66.4064 11.829 66.4904 11.913 66.4904 12.039V14.517C66.4904 14.643 66.5744 14.727 66.7004 14.727H68.6744C68.8004 14.727 68.8844 14.811 68.8844 14.937V16.659C68.8844 16.785 68.8004 16.869 68.6744 16.869H66.4694V22.056C66.4694 22.875 66.9314 23.085 67.4564 23.085C67.8764 23.085 68.3384 22.938 68.7164 22.707C68.8634 22.623 68.9684 22.665 68.9684 22.833V24.828C68.9684 24.933 68.9264 25.017 68.8424 25.08C68.2334 25.458 67.3724 25.71 66.4274 25.71C64.6844 25.71 63.1304 24.912 63.1304 22.476V16.869H62.2484C62.1224 16.869 62.0384 16.785 62.0384 16.659V14.937C62.0384 14.811 62.1224 14.727 62.2484 14.727H62.8154ZM73.4298 16.323C73.4298 16.638 73.7868 16.68 73.9128 16.407C74.3748 15.315 75.1308 14.496 76.6008 14.496C78.2178 14.496 78.9528 15.609 78.9528 17.373V25.29C78.9528 25.416 78.8688 25.5 78.7428 25.5H75.8238C75.6978 25.5 75.6138 25.416 75.6138 25.29V18.633C75.6138 17.709 75.2778 17.268 74.5848 17.268C73.8708 17.268 73.4298 17.709 73.4298 18.633V25.29C73.4298 25.416 73.3458 25.5 73.2198 25.5H70.3008C70.1748 25.5 70.0908 25.416 70.0908 25.29V10.548C70.0908 10.422 70.1748 10.338 70.3008 10.338H73.2198C73.3458 10.338 73.4298 10.422 73.4298 10.548V16.323Z' fill='%231E1E1E'/%3E%3Cpath d='M100.132 16.3203C105.58 17.3761 107.272 22.4211 107.318 27.4961C107.318 27.6101 107.226 27.7041 107.112 27.7041H100.252C100.138 27.7041 100.046 27.6121 100.046 27.5001C100.026 23.5629 99.3877 20.0896 95.4865 19.9396C95.3705 19.9356 95.2725 20.0276 95.2725 20.1456V27.5001C95.2725 27.6141 95.1806 27.7061 95.0666 27.7061H88.206C88.092 27.7061 88 27.6141 88 27.5001V8.75585C88 8.64187 88.092 8.54989 88.206 8.54989H95.0686C95.1826 8.54989 95.2745 8.64187 95.2745 8.75585V15.7764C95.2745 15.8804 95.3585 15.9644 95.4625 15.9644C95.5445 15.9644 95.6185 15.9104 95.6425 15.8324C97.4081 10.0416 100.709 8.58588 106.07 8.55189C106.184 8.55189 106.276 8.64387 106.276 8.75785V15.7604C106.276 15.8744 106.184 15.9664 106.07 15.9664H100.166C100.066 15.9664 99.9856 16.0464 99.9856 16.1464C99.9856 16.2304 100.048 16.3043 100.132 16.3203ZM118.918 20.7095V16.1704C118.918 16.0564 119.01 15.9644 119.124 15.9644H124.173C124.273 15.9644 124.353 15.8844 124.353 15.7844C124.353 15.6985 124.291 15.6245 124.207 15.6085C120.256 14.8246 118.432 12.5511 118.37 8.75585C118.368 8.64387 118.458 8.54989 118.572 8.54989H125.986C126.1 8.54989 126.192 8.64187 126.192 8.75585V11.9532C126.192 12.0672 126.284 12.1592 126.398 12.1592H130.649C130.763 12.1592 130.855 12.2511 130.855 12.3651V15.7624C130.855 15.8764 130.763 15.9684 130.649 15.9684H126.398C126.284 15.9684 126.192 16.0604 126.192 16.1744V19.8356C126.192 21.1294 126.986 21.5553 128.04 21.5553C129.692 21.5553 131.323 20.8114 131.977 20.4735C132.113 20.4035 132.277 20.5015 132.277 20.6555V26.3543C132.277 26.5063 132.193 26.6463 132.059 26.7183C131.413 27.0582 129.418 28 127.136 28C122.435 27.996 118.918 26.0824 118.918 20.7095ZM109.266 27.4981V16.1704C109.266 16.0564 109.358 15.9644 109.472 15.9644H116.334C116.448 15.9644 116.54 16.0564 116.54 16.1704V27.4981C116.54 27.6121 116.448 27.7041 116.334 27.7041H109.472C109.358 27.7021 109.266 27.6101 109.266 27.4981ZM108.876 11.4913C108.876 13.4189 110.238 14.9826 112.853 14.9826C115.469 14.9826 116.83 13.4189 116.83 11.4913C116.83 9.56369 115.471 8 112.853 8C110.238 8 108.876 9.56369 108.876 11.4913Z' fill='%231E1E1E'/%3E%3C/svg%3E");}.formkit-form[data-uid="6090e6286d"] .formkit-powered-by-convertkit:hover,.formkit-form[data-uid="6090e6286d"] .formkit-powered-by-convertkit:focus{background-color:#ffffff;-webkit-transform:scale(1.025) perspective(1px);-ms-transform:scale(1.025) perspective(1px);transform:scale(1.025) perspective(1px);opacity:1;}.formkit-form[data-uid="6090e6286d"] .formkit-powered-by-convertkit[data-variant="dark"],.formkit-form[data-uid="6090e6286d"] .formkit-powered-by-convertkit[data-variant="light"]{background-color:transparent;border-color:transparent;width:133px;}.formkit-form[data-uid="6090e6286d"] .formkit-powered-by-convertkit[data-variant="light"]{color:#ffffff;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='133' height='36' viewBox='0 0 133 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.861 25.5C0.735 25.5 0.651 25.416 0.651 25.29V10.548C0.651 10.422 0.735 10.338 0.861 10.338H6.279C9.072 10.338 10.668 11.451 10.668 13.824C10.668 15.819 9.219 16.932 8.001 17.226C7.707 17.268 7.707 17.625 8.022 17.688C9.912 18.108 11.088 19.116 11.088 21.321C11.088 23.715 9.429 25.5 6.426 25.5H0.861ZM5.397 23.085C6.825 23.085 7.518 22.224 7.518 21.006C7.518 19.683 6.825 18.948 5.397 18.948H4.2V23.085H5.397ZM5.313 16.617C6.51 16.617 7.245 15.945 7.245 14.601C7.245 13.383 6.51 12.753 5.25 12.753H4.2V16.617H5.313ZM17.9758 23.883C17.9758 23.568 17.6608 23.505 17.5348 23.799C17.0308 24.954 16.1698 25.731 14.5528 25.731C12.8728 25.731 12.0958 24.471 12.0958 22.707V14.937C12.0958 14.811 12.1798 14.727 12.3058 14.727H15.2248C15.3508 14.727 15.4348 14.811 15.4348 14.937V21.657C15.4348 22.581 15.7708 23.022 16.4638 23.022C17.1778 23.022 17.6188 22.581 17.6188 21.657V14.937C17.6188 14.811 17.7028 14.727 17.8288 14.727H20.7478C20.8738 14.727 20.9578 14.811 20.9578 14.937V25.29C20.9578 25.416 20.8738 25.5 20.7478 25.5H18.1858C18.0598 25.5 17.9758 25.416 17.9758 25.29V23.883ZM25.6141 25.29C25.6141 25.416 25.5301 25.5 25.4041 25.5H22.4851C22.3591 25.5 22.2751 25.416 22.2751 25.29V14.937C22.2751 14.811 22.3591 14.727 22.4851 14.727H25.4041C25.5301 14.727 25.6141 14.811 25.6141 14.937V25.29ZM23.9131 13.74C22.8001 13.74 22.0441 12.942 22.0441 11.934C22.0441 10.926 22.8001 10.107 23.9131 10.107C25.0051 10.107 25.7611 10.926 25.7611 11.934C25.7611 12.942 25.0051 13.74 23.9131 13.74ZM26.7883 10.548C26.7883 10.422 26.8723 10.338 26.9983 10.338H29.9173C30.0433 10.338 30.1273 10.422 30.1273 10.548V22.056C30.1273 22.749 30.2533 23.085 30.8203 23.085C31.0093 23.085 31.1983 23.043 31.3663 23.001C31.5133 22.959 31.6183 22.959 31.6183 23.127V25.059C31.6183 25.164 31.5763 25.269 31.4923 25.311C30.9673 25.521 30.2953 25.71 29.5813 25.71C27.7123 25.71 26.7883 24.639 26.7883 22.476V10.548ZM32.4237 14.727C32.8227 14.727 32.9277 14.538 32.9697 14.055L33.1167 12.039C33.1167 11.913 33.2217 11.829 33.3477 11.829H35.8887C36.0147 11.829 36.0987 11.913 36.0987 12.039V14.517C36.0987 14.643 36.1827 14.727 36.3087 14.727H38.2827C38.4087 14.727 38.4927 14.811 38.4927 14.937V16.659C38.4927 16.785 38.4087 16.869 38.2827 16.869H36.0777V22.056C36.0777 22.875 36.5397 23.085 37.0647 23.085C37.4847 23.085 37.9467 22.938 38.3247 22.707C38.4717 22.623 38.5767 22.665 38.5767 22.833V24.828C38.5767 24.933 38.5347 25.017 38.4507 25.08C37.8417 25.458 36.9807 25.71 36.0357 25.71C34.2927 25.71 32.7387 24.912 32.7387 22.476V16.869H31.8567C31.7307 16.869 31.6467 16.785 31.6467 16.659V14.937C31.6467 14.811 31.7307 14.727 31.8567 14.727H32.4237ZM51.3808 14.727C51.5068 14.727 51.5908 14.79 51.6118 14.916L52.3888 19.851L52.5778 21.174C52.6198 21.468 52.9558 21.468 52.9768 21.174C53.0398 20.712 53.0818 20.271 53.1658 19.83L53.8798 14.916C53.9008 14.79 53.9848 14.727 54.1108 14.727H56.6728C56.8198 14.727 56.8828 14.811 56.8618 14.958L54.6778 25.311C54.6568 25.437 54.5728 25.5 54.4468 25.5H51.3178C51.1918 25.5 51.1078 25.437 51.0868 25.311L50.1208 20.082L49.8898 18.633C49.8688 18.444 49.6588 18.444 49.6378 18.633L49.4068 20.103L48.5458 25.311C48.5248 25.437 48.4408 25.5 48.3148 25.5H45.2068C45.0808 25.5 44.9968 25.437 44.9758 25.311L42.8128 14.958C42.7918 14.811 42.8548 14.727 43.0018 14.727H45.9628C46.0888 14.727 46.1728 14.79 46.1938 14.916L46.9288 19.83C47.0128 20.271 47.0758 20.754 47.1388 21.195C47.2018 21.51 47.4748 21.531 47.5378 21.195L47.7478 19.872L48.6088 14.916C48.6298 14.79 48.7138 14.727 48.8398 14.727H51.3808ZM61.1582 25.29C61.1582 25.416 61.0742 25.5 60.9482 25.5H58.0292C57.9032 25.5 57.8192 25.416 57.8192 25.29V14.937C57.8192 14.811 57.9032 14.727 58.0292 14.727H60.9482C61.0742 14.727 61.1582 14.811 61.1582 14.937V25.29ZM59.4572 13.74C58.3442 13.74 57.5882 12.942 57.5882 11.934C57.5882 10.926 58.3442 10.107 59.4572 10.107C60.5492 10.107 61.3052 10.926 61.3052 11.934C61.3052 12.942 60.5492 13.74 59.4572 13.74ZM62.8154 14.727C63.2144 14.727 63.3194 14.538 63.3614 14.055L63.5084 12.039C63.5084 11.913 63.6134 11.829 63.7394 11.829H66.2804C66.4064 11.829 66.4904 11.913 66.4904 12.039V14.517C66.4904 14.643 66.5744 14.727 66.7004 14.727H68.6744C68.8004 14.727 68.8844 14.811 68.8844 14.937V16.659C68.8844 16.785 68.8004 16.869 68.6744 16.869H66.4694V22.056C66.4694 22.875 66.9314 23.085 67.4564 23.085C67.8764 23.085 68.3384 22.938 68.7164 22.707C68.8634 22.623 68.9684 22.665 68.9684 22.833V24.828C68.9684 24.933 68.9264 25.017 68.8424 25.08C68.2334 25.458 67.3724 25.71 66.4274 25.71C64.6844 25.71 63.1304 24.912 63.1304 22.476V16.869H62.2484C62.1224 16.869 62.0384 16.785 62.0384 16.659V14.937C62.0384 14.811 62.1224 14.727 62.2484 14.727H62.8154ZM73.4298 16.323C73.4298 16.638 73.7868 16.68 73.9128 16.407C74.3748 15.315 75.1308 14.496 76.6008 14.496C78.2178 14.496 78.9528 15.609 78.9528 17.373V25.29C78.9528 25.416 78.8688 25.5 78.7428 25.5H75.8238C75.6978 25.5 75.6138 25.416 75.6138 25.29V18.633C75.6138 17.709 75.2778 17.268 74.5848 17.268C73.8708 17.268 73.4298 17.709 73.4298 18.633V25.29C73.4298 25.416 73.3458 25.5 73.2198 25.5H70.3008C70.1748 25.5 70.0908 25.416 70.0908 25.29V10.548C70.0908 10.422 70.1748 10.338 70.3008 10.338H73.2198C73.3458 10.338 73.4298 10.422 73.4298 10.548V16.323Z' fill='white'/%3E%3Cpath d='M100.132 16.3203C105.58 17.3761 107.272 22.4211 107.318 27.4961C107.318 27.6101 107.226 27.7041 107.112 27.7041H100.252C100.138 27.7041 100.046 27.6121 100.046 27.5001C100.026 23.5629 99.3877 20.0896 95.4865 19.9396C95.3705 19.9356 95.2725 20.0276 95.2725 20.1456V27.5001C95.2725 27.6141 95.1806 27.7061 95.0666 27.7061H88.206C88.092 27.7061 88 27.6141 88 27.5001V8.75585C88 8.64187 88.092 8.54989 88.206 8.54989H95.0686C95.1826 8.54989 95.2745 8.64187 95.2745 8.75585V15.7764C95.2745 15.8804 95.3585 15.9644 95.4625 15.9644C95.5445 15.9644 95.6185 15.9104 95.6425 15.8324C97.4081 10.0416 100.709 8.58588 106.07 8.55189C106.184 8.55189 106.276 8.64387 106.276 8.75785V15.7604C106.276 15.8744 106.184 15.9664 106.07 15.9664H100.166C100.066 15.9664 99.9856 16.0464 99.9856 16.1464C99.9856 16.2304 100.048 16.3043 100.132 16.3203ZM118.918 20.7095V16.1704C118.918 16.0564 119.01 15.9644 119.124 15.9644H124.173C124.273 15.9644 124.353 15.8844 124.353 15.7844C124.353 15.6985 124.291 15.6245 124.207 15.6085C120.256 14.8246 118.432 12.5511 118.37 8.75585C118.368 8.64387 118.458 8.54989 118.572 8.54989H125.986C126.1 8.54989 126.192 8.64187 126.192 8.75585V11.9532C126.192 12.0672 126.284 12.1592 126.398 12.1592H130.649C130.763 12.1592 130.855 12.2511 130.855 12.3651V15.7624C130.855 15.8764 130.763 15.9684 130.649 15.9684H126.398C126.284 15.9684 126.192 16.0604 126.192 16.1744V19.8356C126.192 21.1294 126.986 21.5553 128.04 21.5553C129.692 21.5553 131.323 20.8114 131.977 20.4735C132.113 20.4035 132.277 20.5015 132.277 20.6555V26.3543C132.277 26.5063 132.193 26.6463 132.059 26.7183C131.413 27.0582 129.418 28 127.136 28C122.435 27.996 118.918 26.0824 118.918 20.7095ZM109.266 27.4981V16.1704C109.266 16.0564 109.358 15.9644 109.472 15.9644H116.334C116.448 15.9644 116.54 16.0564 116.54 16.1704V27.4981C116.54 27.6121 116.448 27.7041 116.334 27.7041H109.472C109.358 27.7021 109.266 27.6101 109.266 27.4981ZM108.876 11.4913C108.876 13.4189 110.238 14.9826 112.853 14.9826C115.469 14.9826 116.83 13.4189 116.83 11.4913C116.83 9.56369 115.471 8 112.853 8C110.238 8 108.876 9.56369 108.876 11.4913Z' fill='white'/%3E%3C/svg%3E");}@-webkit-keyframes formkit-bouncedelay-formkit-form-data-uid-6090e6286d-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}@keyframes formkit-bouncedelay-formkit-form-data-uid-6090e6286d-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}.formkit-form[data-uid="6090e6286d"] blockquote{padding:10px 20px;margin:0 0 20px;border-left:5px solid #e1e1e1;}.formkit-form[data-uid="6090e6286d"] .seva-custom-content{padding:15px;font-size:16px;color:#fff;mix-blend-mode:difference;}.formkit-form[data-uid="6090e6286d"] .formkit-modal.guard{max-width:420px;width:100%;} .formkit-form[data-uid="6090e6286d"]{max-width:700px;}.formkit-form[data-uid="6090e6286d"] [data-style="clean"]{width:100%;}.formkit-form[data-uid="6090e6286d"] .formkit-fields{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0 auto;}.formkit-form[data-uid="6090e6286d"] .formkit-field,.formkit-form[data-uid="6090e6286d"] .formkit-submit{margin:0 0 15px 0;-webkit-flex:1 0 100%;-ms-flex:1 0 100%;flex:1 0 100%;}.formkit-form[data-uid="6090e6286d"] .formkit-powered-by-convertkit-container{margin:0;}.formkit-form[data-uid="6090e6286d"] .formkit-submit{position:static;}.formkit-form[data-uid="6090e6286d"][min-width~="700"] [data-style="clean"],.formkit-form[data-uid="6090e6286d"][min-width~="800"] [data-style="clean"]{padding:10px;padding-top:56px;}.formkit-form[data-uid="6090e6286d"][min-width~="700"] .formkit-fields[data-stacked="false"],.formkit-form[data-uid="6090e6286d"][min-width~="800"] .formkit-fields[data-stacked="false"]{margin-left:-5px;margin-right:-5px;}.formkit-form[data-uid="6090e6286d"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="6090e6286d"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="6090e6286d"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-submit,.formkit-form[data-uid="6090e6286d"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-submit{margin:0 5px 15px 5px;}.formkit-form[data-uid="6090e6286d"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="6090e6286d"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-field{-webkit-flex:100 1 auto;-ms-flex:100 1 auto;flex:100 1 auto;}.formkit-form[data-uid="6090e6286d"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-submit,.formkit-form[data-uid="6090e6286d"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-submit{-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;} </style></form>
+      <form action="https://app.kit.com/forms/9135907/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9135907" data-uid="6090e6286d" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800"><div data-style="clean"><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;" aria-label="Email Address" placeholder="Email Address" required="" type="email"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">寄給我 →</span></button></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow">Built with Kit</a></div></div></form>
     </div>
-
     <div class="result-cta-box">
       <h3>預約一次 15 分鐘的通話</h3>
       <p>不用事先想好要說什麼。<br>你只需要把讓你覺得「怪怪的」那件事帶過來，<br>我來幫你把輪廓看清楚。</p>
@@ -797,25 +261,23 @@
     </div>
   </div>
 
+  <!-- 孤軍型 -->
   <div class="result-section" id="result-solo">
     <div class="result-badge solo">🟡 &nbsp;孤軍型</div>
     <p class="result-title">你一個人<br>開著所有的燈</p>
     <p class="result-subtitle">你在扛，但另一半的那條線，已經斷掉一段時間了</p>
-
     <div class="result-body">
       <p>你答題的方向顯示：家裡不是沒有人在乎，而是只剩你一個人在動。你知道哪裡漏風，你也知道孩子需要什麼——但你需要有人接住你，才能繼續接住他。</p>
       <div class="result-highlight">「一個全靠一個人在撐的家，最後會把那個人撐到退場。退場一次，孩子就更孤單一次。」</div>
       <p>長期獨力支撐最大的代價不是累，而是：你漸漸習慣一個人收尾，另一半漸漸習慣等你收尾，孩子漸漸學會只找你——然後有天你也接不住了。</p>
       <p>你現在需要的，不是「怎麼讓對方改變」的說話術，而是先從外面看清楚這個循環從哪裡開始，然後找到一個你能踩下去的點。</p>
     </div>
-
     <div class="kit-embed-wrapper">
       <h4>📥 獲取完整分析與解方</h4>
       <p>輸入 Email，我會把這份「孤軍型」的詳細應對指南寄給你，方便你隨時保留查看。</p>
       <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-      <form action="https://app.kit.com/forms/9135909/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9135909" data-uid="a128ff9f41" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800"><div data-style="clean"><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;" aria-label="Email Address" placeholder="Email Address" required="" type="email"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Subscribe</span></button></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow">Built with Kit</a></div></div><style>.formkit-form[data-uid="a128ff9f41"] *{box-sizing:border-box;}.formkit-form[data-uid="a128ff9f41"]{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.formkit-form[data-uid="a128ff9f41"] legend{border:none;font-size:inherit;margin-bottom:10px;padding:0;position:relative;display:table;}.formkit-form[data-uid="a128ff9f41"] fieldset{border:0;padding:0.01em 0 0 0;margin:0;min-width:0;}.formkit-form[data-uid="a128ff9f41"] body:not(:-moz-handler-blocked) fieldset{display:table-cell;}.formkit-form[data-uid="a128ff9f41"] h1,.formkit-form[data-uid="a128ff9f41"] h2,.formkit-form[data-uid="a128ff9f41"] h3,.formkit-form[data-uid="a128ff9f41"] h4,.formkit-form[data-uid="a128ff9f41"] h5,.formkit-form[data-uid="a128ff9f41"] h6{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="a128ff9f41"] h2{font-size:1.5em;margin:1em 0;}.formkit-form[data-uid="a128ff9f41"] h3{font-size:1.17em;margin:1em 0;}.formkit-form[data-uid="a128ff9f41"] p{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="a128ff9f41"] ol:not([template-default]),.formkit-form[data-uid="a128ff9f41"] ul:not([template-default]),.formkit-form[data-uid="a128ff9f41"] blockquote:not([template-default]){text-align:left;}.formkit-form[data-uid="a128ff9f41"] p:not([template-default]),.formkit-form[data-uid="a128ff9f41"] hr:not([template-default]),.formkit-form[data-uid="a128ff9f41"] blockquote:not([template-default]),.formkit-form[data-uid="a128ff9f41"] ol:not([template-default]),.formkit-form[data-uid="a128ff9f41"] ul:not([template-default]){color:inherit;font-style:initial;}.formkit-form[data-uid="a128ff9f41"] .ordered-list,.formkit-form[data-uid="a128ff9f41"] .unordered-list{list-style-position:outside !important;padding-left:1em;}.formkit-form[data-uid="a128ff9f41"] .list-item{padding-left:0;}.formkit-form[data-uid="a128ff9f41"][data-format="modal"]{display:none;}.formkit-form[data-uid="a128ff9f41"][data-format="slide in"]{display:none;}.formkit-form[data-uid="a128ff9f41"][data-format="sticky bar"]{display:none;}.formkit-sticky-bar .formkit-form[data-uid="a128ff9f41"][data-format="sticky bar"]{display:block;}.formkit-form[data-uid="a128ff9f41"] .formkit-input,.formkit-form[data-uid="a128ff9f41"] .formkit-select,.formkit-form[data-uid="a128ff9f41"] .formkit-checkboxes{width:100%;}.formkit-form[data-uid="a128ff9f41"] .formkit-button,.formkit-form[data-uid="a128ff9f41"] .formkit-submit{border:0;border-radius:5px;color:#ffffff;cursor:pointer;display:inline-block;text-align:center;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:15px;overflow:hidden;padding:0;position:relative;vertical-align:middle;}.formkit-form[data-uid="a128ff9f41"] .formkit-button:hover,.formkit-form[data-uid="a128ff9f41"] .formkit-submit:hover,.formkit-form[data-uid="a128ff9f41"] .formkit-button:focus,.formkit-form[data-uid="a128ff9f41"] .formkit-submit:focus{outline:none;}.formkit-form[data-uid="a128ff9f41"] .formkit-button:hover > span,.formkit-form[data-uid="a128ff9f41"] .formkit-submit:hover > span,.formkit-form[data-uid="a128ff9f41"] .formkit-button:focus > span,.formkit-form[data-uid="a128ff9f41"] .formkit-submit:focus > span{background-color:rgba(0,0,0,0.1);}.formkit-form[data-uid="a128ff9f41"] .formkit-button > span,.formkit-form[data-uid="a128ff9f41"] .formkit-submit > span{display:block;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;padding:12px 24px;}.formkit-form[data-uid="a128ff9f41"] .formkit-input{background:#ffffff;font-size:15px;padding:12px;border:1px solid #e3e3e3;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;line-height:1.4;margin:0;-webkit-transition:border-color ease-out 300ms;transition:border-color ease-out 300ms;}.formkit-form[data-uid="a128ff9f41"] .formkit-input:focus{outline:none;border-color:#1677be;-webkit-transition:border-color ease 300ms;transition:border-color ease 300ms;}.formkit-form[data-uid="a128ff9f41"] .formkit-input::-webkit-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="a128ff9f41"] .formkit-input::-moz-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="a128ff9f41"] .formkit-input:-ms-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="a128ff9f41"] .formkit-input::placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="a128ff9f41"] [data-group="dropdown"]{position:relative;display:inline-block;width:100%;}.formkit-form[data-uid="a128ff9f41"] [data-group="dropdown"]::before{content:"";top:calc(50% - 2.5px);right:10px;position:absolute;pointer-events:none;border-color:#4f4f4f transparent transparent transparent;border-style:solid;border-width:6px 6px 0 6px;height:0;width:0;z-index:999;}.formkit-form[data-uid="a128ff9f41"] [data-group="dropdown"] select{height:auto;width:100%;cursor:pointer;color:#333333;line-height:1.4;margin-bottom:0;padding:0 6px;-webkit-appearance:none;-moz-appearance:none;appearance:none;font-size:15px;padding:12px;padding-right:25px;border:1px solid #e3e3e3;background:#ffffff;}.formkit-form[data-uid="a128ff9f41"] [data-group="dropdown"] select:focus{outline:none;}.formkit-form[data-uid="a128ff9f41"] [data-group="checkboxes"]{text-align:left;margin:0;}.formkit-form[data-uid="a128ff9f41"] [data-group="checkboxes"] [data-group="checkbox"]{margin-bottom:10px;}.formkit-form[data-uid="a128ff9f41"] [data-group="checkboxes"] [data-group="checkbox"] *{cursor:pointer;}.formkit-form[data-uid="a128ff9f41"] [data-group="checkboxes"] [data-group="checkbox"]:last-of-type{margin-bottom:0;}.formkit-form[data-uid="a128ff9f41"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]{display:none;}.formkit-form[data-uid="a128ff9f41"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"] + label::after{content:none;}.formkit-form[data-uid="a128ff9f41"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::after{border-color:#ffffff;content:"";}.formkit-form[data-uid="a128ff9f41"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::before{background:#10bf7a;border-color:#10bf7a;}.formkit-form[data-uid="a128ff9f41"] [data-group="checkboxes"] [data-group="checkbox"] label{position:relative;display:inline-block;padding-left:28px;}.formkit-form[data-uid="a128ff9f41"] [data-group="checkboxes"] [data-group="checkbox"] label::before,.formkit-form[data-uid="a128ff9f41"] [data-group="checkboxes"] [data-group="checkbox"] label::after{position:absolute;content:"";display:inline-block;}.formkit-form[data-uid="a128ff9f41"] [data-group="checkboxes"] [data-group="checkbox"] label::before{height:16px;width:16px;border:1px solid #e3e3e3;background:#ffffff;left:0px;top:3px;}.formkit-form[data-uid="a128ff9f41"] [data-group="checkboxes"] [data-group="checkbox"] label::after{height:4px;width:8px;border-left:2px solid #4d4d4d;border-bottom:2px solid #4d4d4d;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);left:4px;top:8px;}.formkit-form[data-uid="a128ff9f41"] .formkit-alert{background:#f9fafb;border:1px solid #e3e3e3;border-radius:5px;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;list-style:none;margin:25px auto;padding:12px;text-align:center;width:100%;}.formkit-form[data-uid="a128ff9f41"] .formkit-alert:empty{display:none;}.formkit-form[data-uid="a128ff9f41"] .formkit-alert-success{background:#d3fbeb;border-color:#10bf7a;color:#0c905c;}.formkit-form[data-uid="a128ff9f41"] .formkit-alert-error{background:#fde8e2;border-color:#f2643b;color:#ea4110;}.formkit-form[data-uid="a128ff9f41"] .formkit-spinner{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:0px;width:0px;margin:0 auto;position:absolute;top:0;left:0;right:0;width:0px;overflow:hidden;text-align:center;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;}.formkit-form[data-uid="a128ff9f41"] .formkit-spinner > div{margin:auto;width:12px;height:12px;background-color:#fff;opacity:0.3;border-radius:100%;display:inline-block;-webkit-animation:formkit-bouncedelay-formkit-form-data-uid-a128ff9f41- 1.4s infinite ease-in-out both;animation:formkit-bouncedelay-formkit-form-data-uid-a128ff9f41- 1.4s infinite ease-in-out both;}.formkit-form[data-uid="a128ff9f41"] .formkit-spinner > div:nth-child(1){-webkit-animation-delay:-0.32s;animation-delay:-0.32s;}.formkit-form[data-uid="a128ff9f41"] .formkit-spinner > div:nth-child(2){-webkit-animation-delay:-0.16s;animation-delay:-0.16s;}.formkit-form[data-uid="a128ff9f41"] .formkit-submit[data-active] .formkit-spinner{opacity:1;height:100%;width:50px;}.formkit-form[data-uid="a128ff9f41"] .formkit-submit[data-active] .formkit-spinner ~ span{opacity:0;}.formkit-form[data-uid="a128ff9f41"] .formkit-powered-by[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="a128ff9f41"] .formkit-powered-by-convertkit-container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;margin:10px 0;position:relative;}.formkit-form[data-uid="a128ff9f41"] .formkit-powered-by-convertkit-container[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="a128ff9f41"] .formkit-powered-by-convertkit{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ffffff;border-radius:9px;color:#3d3d3d;cursor:pointer;display:block;height:36px;margin:0 auto;opacity:0.95;padding:0;-webkit-text-decoration:none;text-decoration:none;text-indent:100%;-webkit-transition:ease-in-out all 200ms;transition:ease-in-out all 200ms;white-space:nowrap;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:157px;background-repeat:no-repeat;background-position:center;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='133' height='36' viewBox='0 0 133 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.861 25.5C0.735 25.5 0.651 25.416 0.651 25.29V10.548C0.651 10.422 0.735 10.338 0.861 10.338H6.279C9.072 10.338 10.668 11.451 10.668 13.824C10.668 15.819 9.219 16.932 8.001 17.226C7.707 17.268 7.707 17.625 8.022 17.688C9.912 18.108 11.088 19.116 11.088 21.321C11.088 23.715 9.429 25.5 6.426 25.5H0.861ZM5.397 23.085C6.825 23.085 7.518 22.224 7.518 21.006C7.518 19.683 6.825 18.948 5.397 18.948H4.2V23.085H5.397ZM5.313 16.617C6.51 16.617 7.245 15.945 7.245 14.601C7.245 13.383 6.51 12.753 5.25 12.753H4.2V16.617H5.313ZM17.9758 23.883C17.9758 23.568 17.6608 23.505 17.5348 23.799C17.0308 24.954 16.1698 25.731 14.5528 25.731C12.8728 25.731 12.0958 24.471 12.0958 22.707V14.937C12.0958 14.811 12.1798 14.727 12.3058 14.727H15.2248C15.3508 14.727 15.4348 14.811 15.4348 14.937V21.657C15.4348 22.581 15.7708 23.022 16.4638 23.022C17.1778 23.022 17.6188 22.581 17.6188 21.657V14.937C17.6188 14.811 17.7028 14.727 17.8288 14.727H20.7478C20.8738 14.727 20.9578 14.811 20.9578 14.937V25.29C20.9578 25.416 20.8738 25.5 20.7478 25.5H18.1858C18.0598 25.5 17.9758 25.416 17.9758 25.29V23.883ZM25.6141 25.29C25.6141 25.416 25.5301 25.5 25.4041 25.5H22.4851C22.3591 25.5 22.2751 25.416 22.2751 25.29V14.937C22.2751 14.811 22.3591 14.727 22.4851 14.727H25.4041C25.5301 14.727 25.6141 14.811 25.6141 14.937V25.29ZM23.9131 13.74C22.8001 13.74 22.0441 12.942 22.0441 11.934C22.0441 10.926 22.8001 10.107 23.9131 10.107C25.0051 10.107 25.7611 10.926 25.7611 11.934C25.7611 12.942 25.0051 13.74 23.9131 13.74ZM26.7883 10.548C26.7883 10.422 26.8723 10.338 26.9983 10.338H29.9173C30.0433 10.338 30.1273 10.422 30.1273 10.548V22.056C30.1273 22.749 30.2533 23.085 30.8203 23.085C31.0093 23.085 31.1983 23.043 31.3663 23.001C31.5133 22.959 31.6183 22.959 31.6183 23.127V25.059C31.6183 25.164 31.5763 25.269 31.4923 25.311C30.9673 25.521 30.2953 25.71 29.5813 25.71C27.7123 25.71 26.7883 24.639 26.7883 22.476V10.548ZM32.4237 14.727C32.8227 14.727 32.9277 14.538 32.9697 14.055L33.1167 12.039C33.1167 11.913 33.2217 11.829 33.3477 11.829H35.8887C36.0147 11.829 36.0987 11.913 36.0987 12.039V14.517C36.0987 14.643 36.1827 14.727 36.3087 14.727H38.2827C38.4087 14.727 38.4927 14.811 38.4927 14.937V16.659C38.4927 16.785 38.4087 16.869 38.2827 16.869H36.0777V22.056C36.0777 22.875 36.5397 23.085 37.0647 23.085C37.4847 23.085 37.9467 22.938 38.3247 22.707C38.4717 22.623 38.5767 22.665 38.5767 22.833V24.828C38.5767 24.933 38.5347 25.017 38.4507 25.08C37.8417 25.458 36.9807 25.71 36.0357 25.71C34.2927 25.71 32.7387 24.912 32.7387 22.476V16.869H31.8567C31.7307 16.869 31.6467 16.785 31.6467 16.659V14.937C31.6467 14.811 31.7307 14.727 31.8567 14.727H32.4237ZM51.3808 14.727C51.5068 14.727 51.5908 14.79 51.6118 14.916L52.3888 19.851L52.5778 21.174C52.6198 21.468 52.9558 21.468 52.9768 21.174C53.0398 20.712 53.0818 20.271 53.1658 19.83L53.8798 14.916C53.9008 14.79 53.9848 14.727 54.1108 14.727H56.6728C56.8198 14.727 56.8828 14.811 56.8618 14.958L54.6778 25.311C54.6568 25.437 54.5728 25.5 54.4468 25.5H51.3178C51.1918 25.5 51.1078 25.437 51.0868 25.311L50.1208 20.082L49.8898 18.633C49.8688 18.444 49.6588 18.444 49.6378 18.633L49.4068 20.103L48.5458 25.311C48.5248 25.437 48.4408 25.5 48.3148 25.5H45.2068C45.0808 25.5 44.9968 25.437 44.9758 25.311L42.8128 14.958C42.7918 14.811 42.8548 14.727 43.0018 14.727H45.9628C46.0888 14.727 46.1728 14.79 46.1938 14.916L46.9288 19.83C47.0128 20.271 47.0758 20.754 47.1388 21.195C47.2018 21.51 47.4748 21.531 47.5378 21.195L47.7478 19.872L48.6088 14.916C48.6298 14.79 48.7138 14.727 48.8398 14.727H51.3808ZM61.1582 25.29C61.1582 25.416 61.0742 25.5 60.9482 25.5H58.0292C57.9032 25.5 57.8192 25.416 57.8192 25.29V14.937C57.8192 14.811 57.9032 14.727 58.0292 14.727H60.9482C61.0742 14.727 61.1582 14.811 61.1582 14.937V25.29ZM59.4572 13.74C58.3442 13.74 57.5882 12.942 57.5882 11.934C57.5882 10.926 58.3442 10.107 59.4572 10.107C60.5492 10.107 61.3052 10.926 61.3052 11.934C61.3052 12.942 60.5492 13.74 59.4572 13.74ZM62.8154 14.727C63.2144 14.727 63.3194 14.538 63.3614 14.055L63.5084 12.039C63.5084 11.913 63.6134 11.829 63.7394 11.829H66.2804C66.4064 11.829 66.4904 11.913 66.4904 12.039V14.517C66.4904 14.643 66.5744 14.727 66.7004 14.727H68.6744C68.8004 14.727 68.8844 14.811 68.8844 14.937V16.659C68.8844 16.785 68.8004 16.869 68.6744 16.869H66.4694V22.056C66.4694 22.875 66.9314 23.085 67.4564 23.085C67.8764 23.085 68.3384 22.938 68.7164 22.707C68.8634 22.623 68.9684 22.665 68.9684 22.833V24.828C68.9684 24.933 68.9264 25.017 68.8424 25.08C68.2334 25.458 67.3724 25.71 66.4274 25.71C64.6844 25.71 63.1304 24.912 63.1304 22.476V16.869H62.2484C62.1224 16.869 62.0384 16.785 62.0384 16.659V14.937C62.0384 14.811 62.1224 14.727 62.2484 14.727H62.8154ZM73.4298 16.323C73.4298 16.638 73.7868 16.68 73.9128 16.407C74.3748 15.315 75.1308 14.496 76.6008 14.496C78.2178 14.496 78.9528 15.609 78.9528 17.373V25.29C78.9528 25.416 78.8688 25.5 78.7428 25.5H75.8238C75.6978 25.5 75.6138 25.416 75.6138 25.29V18.633C75.6138 17.709 75.2778 17.268 74.5848 17.268C73.8708 17.268 73.4298 17.709 73.4298 18.633V25.29C73.4298 25.416 73.3458 25.5 73.2198 25.5H70.3008C70.1748 25.5 70.0908 25.416 70.0908 25.29V10.548C70.0908 10.422 70.1748 10.338 70.3008 10.338H73.2198C73.3458 10.338 73.4298 10.422 73.4298 10.548V16.323Z' fill='%231E1E1E'/%3E%3Cpath d='M100.132 16.3203C105.58 17.3761 107.272 22.4211 107.318 27.4961C107.318 27.6101 107.226 27.7041 107.112 27.7041H100.252C100.138 27.7041 100.046 27.6121 100.046 27.5001C100.026 23.5629 99.3877 20.0896 95.4865 19.9396C95.3705 19.9356 95.2725 20.0276 95.2725 20.1456V27.5001C95.2725 27.6141 95.1806 27.7061 95.0666 27.7061H88.206C88.092 27.7061 88 27.6141 88 27.5001V8.75585C88 8.64187 88.092 8.54989 88.206 8.54989H95.0686C95.1826 8.54989 95.2745 8.64187 95.2745 8.75585V15.7764C95.2745 15.8804 95.3585 15.9644 95.4625 15.9644C95.5445 15.9644 95.6185 15.9104 95.6425 15.8324C97.4081 10.0416 100.709 8.58588 106.07 8.55189C106.184 8.55189 106.276 8.64387 106.276 8.75785V15.7604C106.276 15.8744 106.184 15.9664 106.07 15.9664H100.166C100.066 15.9664 99.9856 16.0464 99.9856 16.1464C99.9856 16.2304 100.048 16.3043 100.132 16.3203ZM118.918 20.7095V16.1704C118.918 16.0564 119.01 15.9644 119.124 15.9644H124.173C124.273 15.9644 124.353 15.8844 124.353 15.7844C124.353 15.6985 124.291 15.6245 124.207 15.6085C120.256 14.8246 118.432 12.5511 118.37 8.75585C118.368 8.64387 118.458 8.54989 118.572 8.54989H125.986C126.1 8.54989 126.192 8.64187 126.192 8.75585V11.9532C126.192 12.0672 126.284 12.1592 126.398 12.1592H130.649C130.763 12.1592 130.855 12.2511 130.855 12.3651V15.7624C130.855 15.8764 130.763 15.9684 130.649 15.9684H126.398C126.284 15.9684 126.192 16.0604 126.192 16.1744V19.8356C126.192 21.1294 126.986 21.5553 128.04 21.5553C129.692 21.5553 131.323 20.8114 131.977 20.4735C132.113 20.4035 132.277 20.5015 132.277 20.6555V26.3543C132.277 26.5063 132.193 26.6463 132.059 26.7183C131.413 27.0582 129.418 28 127.136 28C122.435 27.996 118.918 26.0824 118.918 20.7095ZM109.266 27.4981V16.1704C109.266 16.0564 109.358 15.9644 109.472 15.9644H116.334C116.448 15.9644 116.54 16.0564 116.54 16.1704V27.4981C116.54 27.6121 116.448 27.7041 116.334 27.7041H109.472C109.358 27.7021 109.266 27.6101 109.266 27.4981ZM108.876 11.4913C108.876 13.4189 110.238 14.9826 112.853 14.9826C115.469 14.9826 116.83 13.4189 116.83 11.4913C116.83 9.56369 115.471 8 112.853 8C110.238 8 108.876 9.56369 108.876 11.4913Z' fill='%231E1E1E'/%3E%3C/svg%3E");}.formkit-form[data-uid="a128ff9f41"] .formkit-powered-by-convertkit:hover,.formkit-form[data-uid="a128ff9f41"] .formkit-powered-by-convertkit:focus{background-color:#ffffff;-webkit-transform:scale(1.025) perspective(1px);-ms-transform:scale(1.025) perspective(1px);transform:scale(1.025) perspective(1px);opacity:1;}.formkit-form[data-uid="a128ff9f41"] .formkit-powered-by-convertkit[data-variant="dark"],.formkit-form[data-uid="a128ff9f41"] .formkit-powered-by-convertkit[data-variant="light"]{background-color:transparent;border-color:transparent;width:133px;}.formkit-form[data-uid="a128ff9f41"] .formkit-powered-by-convertkit[data-variant="light"]{color:#ffffff;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='133' height='36' viewBox='0 0 133 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.861 25.5C0.735 25.5 0.651 25.416 0.651 25.29V10.548C0.651 10.422 0.735 10.338 0.861 10.338H6.279C9.072 10.338 10.668 11.451 10.668 13.824C10.668 15.819 9.219 16.932 8.001 17.226C7.707 17.268 7.707 17.625 8.022 17.688C9.912 18.108 11.088 19.116 11.088 21.321C11.088 23.715 9.429 25.5 6.426 25.5H0.861ZM5.397 23.085C6.825 23.085 7.518 22.224 7.518 21.006C7.518 19.683 6.825 18.948 5.397 18.948H4.2V23.085H5.397ZM5.313 16.617C6.51 16.617 7.245 15.945 7.245 14.601C7.245 13.383 6.51 12.753 5.25 12.753H4.2V16.617H5.313ZM17.9758 23.883C17.9758 23.568 17.6608 23.505 17.5348 23.799C17.0308 24.954 16.1698 25.731 14.5528 25.731C12.8728 25.731 12.0958 24.471 12.0958 22.707V14.937C12.0958 14.811 12.1798 14.727 12.3058 14.727H15.2248C15.3508 14.727 15.4348 14.811 15.4348 14.937V21.657C15.4348 22.581 15.7708 23.022 16.4638 23.022C17.1778 23.022 17.6188 22.581 17.6188 21.657V14.937C17.6188 14.811 17.7028 14.727 17.8288 14.727H20.7478C20.8738 14.727 20.9578 14.811 20.9578 14.937V25.29C20.9578 25.416 20.8738 25.5 20.7478 25.5H18.1858C18.0598 25.5 17.9758 25.416 17.9758 25.29V23.883ZM25.6141 25.29C25.6141 25.416 25.5301 25.5 25.4041 25.5H22.4851C22.3591 25.5 22.2751 25.416 22.2751 25.29V14.937C22.2751 14.811 22.3591 14.727 22.4851 14.727H25.4041C25.5301 14.727 25.6141 14.811 25.6141 14.937V25.29ZM23.9131 13.74C22.8001 13.74 22.0441 12.942 22.0441 11.934C22.0441 10.926 22.8001 10.107 23.9131 10.107C25.0051 10.107 25.7611 10.926 25.7611 11.934C25.7611 12.942 25.0051 13.74 23.9131 13.74ZM26.7883 10.548C26.7883 10.422 26.8723 10.338 26.9983 10.338H29.9173C30.0433 10.338 30.1273 10.422 30.1273 10.548V22.056C30.1273 22.749 30.2533 23.085 30.8203 23.085C31.0093 23.085 31.1983 23.043 31.3663 23.001C31.5133 22.959 31.6183 22.959 31.6183 23.127V25.059C31.6183 25.164 31.5763 25.269 31.4923 25.311C30.9673 25.521 30.2953 25.71 29.5813 25.71C27.7123 25.71 26.7883 24.639 26.7883 22.476V10.548ZM32.4237 14.727C32.8227 14.727 32.9277 14.538 32.9697 14.055L33.1167 12.039C33.1167 11.913 33.2217 11.829 33.3477 11.829H35.8887C36.0147 11.829 36.0987 11.913 36.0987 12.039V14.517C36.0987 14.643 36.1827 14.727 36.3087 14.727H38.2827C38.4087 14.727 38.4927 14.811 38.4927 14.937V16.659C38.4927 16.785 38.4087 16.869 38.2827 16.869H36.0777V22.056C36.0777 22.875 36.5397 23.085 37.0647 23.085C37.4847 23.085 37.9467 22.938 38.3247 22.707C38.4717 22.623 38.5767 22.665 38.5767 22.833V24.828C38.5767 24.933 38.5347 25.017 38.4507 25.08C37.8417 25.458 36.9807 25.71 36.0357 25.71C34.2927 25.71 32.7387 24.912 32.7387 22.476V16.869H31.8567C31.7307 16.869 31.6467 16.785 31.6467 16.659V14.937C31.6467 14.811 31.7307 14.727 31.8567 14.727H32.4237ZM51.3808 14.727C51.5068 14.727 51.5908 14.79 51.6118 14.916L52.3888 19.851L52.5778 21.174C52.6198 21.468 52.9558 21.468 52.9768 21.174C53.0398 20.712 53.0818 20.271 53.1658 19.83L53.8798 14.916C53.9008 14.79 53.9848 14.727 54.1108 14.727H56.6728C56.8198 14.727 56.8828 14.811 56.8618 14.958L54.6778 25.311C54.6568 25.437 54.5728 25.5 54.4468 25.5H51.3178C51.1918 25.5 51.1078 25.437 51.0868 25.311L50.1208 20.082L49.8898 18.633C49.8688 18.444 49.6588 18.444 49.6378 18.633L49.4068 20.103L48.5458 25.311C48.5248 25.437 48.4408 25.5 48.3148 25.5H45.2068C45.0808 25.5 44.9968 25.437 44.9758 25.311L42.8128 14.958C42.7918 14.811 42.8548 14.727 43.0018 14.727H45.9628C46.0888 14.727 46.1728 14.79 46.1938 14.916L46.9288 19.83C47.0128 20.271 47.0758 20.754 47.1388 21.195C47.2018 21.51 47.4748 21.531 47.5378 21.195L47.7478 19.872L48.6088 14.916C48.6298 14.79 48.7138 14.727 48.8398 14.727H51.3808ZM61.1582 25.29C61.1582 25.416 61.0742 25.5 60.9482 25.5H58.0292C57.9032 25.5 57.8192 25.416 57.8192 25.29V14.937C57.8192 14.811 57.9032 14.727 58.0292 14.727H60.9482C61.0742 14.727 61.1582 14.811 61.1582 14.937V25.29ZM59.4572 13.74C58.3442 13.74 57.5882 12.942 57.5882 11.934C57.5882 10.926 58.3442 10.107 59.4572 10.107C60.5492 10.107 61.3052 10.926 61.3052 11.934C61.3052 12.942 60.5492 13.74 59.4572 13.74ZM62.8154 14.727C63.2144 14.727 63.3194 14.538 63.3614 14.055L63.5084 12.039C63.5084 11.913 63.6134 11.829 63.7394 11.829H66.2804C66.4064 11.829 66.4904 11.913 66.4904 12.039V14.517C66.4904 14.643 66.5744 14.727 66.7004 14.727H68.6744C68.8004 14.727 68.8844 14.811 68.8844 14.937V16.659C68.8844 16.785 68.8004 16.869 68.6744 16.869H66.4694V22.056C66.4694 22.875 66.9314 23.085 67.4564 23.085C67.8764 23.085 68.3384 22.938 68.7164 22.707C68.8634 22.623 68.9684 22.665 68.9684 22.833V24.828C68.9684 24.933 68.9264 25.017 68.8424 25.08C68.2334 25.458 67.3724 25.71 66.4274 25.71C64.6844 25.71 63.1304 24.912 63.1304 22.476V16.869H62.2484C62.1224 16.869 62.0384 16.785 62.0384 16.659V14.937C62.0384 14.811 62.1224 14.727 62.2484 14.727H62.8154ZM73.4298 16.323C73.4298 16.638 73.7868 16.68 73.9128 16.407C74.3748 15.315 75.1308 14.496 76.6008 14.496C78.2178 14.496 78.9528 15.609 78.9528 17.373V25.29C78.9528 25.416 78.8688 25.5 78.7428 25.5H75.8238C75.6978 25.5 75.6138 25.416 75.6138 25.29V18.633C75.6138 17.709 75.2778 17.268 74.5848 17.268C73.8708 17.268 73.4298 17.709 73.4298 18.633V25.29C73.4298 25.416 73.3458 25.5 73.2198 25.5H70.3008C70.1748 25.5 70.0908 25.416 70.0908 25.29V10.548C70.0908 10.422 70.1748 10.338 70.3008 10.338H73.2198C73.3458 10.338 73.4298 10.422 73.4298 10.548V16.323Z' fill='white'/%3E%3Cpath d='M100.132 16.3203C105.58 17.3761 107.272 22.4211 107.318 27.4961C107.318 27.6101 107.226 27.7041 107.112 27.7041H100.252C100.138 27.7041 100.046 27.6121 100.046 27.5001C100.026 23.5629 99.3877 20.0896 95.4865 19.9396C95.3705 19.9356 95.2725 20.0276 95.2725 20.1456V27.5001C95.2725 27.6141 95.1806 27.7061 95.0666 27.7061H88.206C88.092 27.7061 88 27.6141 88 27.5001V8.75585C88 8.64187 88.092 8.54989 88.206 8.54989H95.0686C95.1826 8.54989 95.2745 8.64187 95.2745 8.75585V15.7764C95.2745 15.8804 95.3585 15.9644 95.4625 15.9644C95.5445 15.9644 95.6185 15.9104 95.6425 15.8324C97.4081 10.0416 100.709 8.58588 106.07 8.55189C106.184 8.55189 106.276 8.64387 106.276 8.75785V15.7604C106.276 15.8744 106.184 15.9664 106.07 15.9664H100.166C100.066 15.9664 99.9856 16.0464 99.9856 16.1464C99.9856 16.2304 100.048 16.3043 100.132 16.3203ZM118.918 20.7095V16.1704C118.918 16.0564 119.01 15.9644 119.124 15.9644H124.173C124.273 15.9644 124.353 15.8844 124.353 15.7844C124.353 15.6985 124.291 15.6245 124.207 15.6085C120.256 14.8246 118.432 12.5511 118.37 8.75585C118.368 8.64387 118.458 8.54989 118.572 8.54989H125.986C126.1 8.54989 126.192 8.64187 126.192 8.75585V11.9532C126.192 12.0672 126.284 12.1592 126.398 12.1592H130.649C130.763 12.1592 130.855 12.2511 130.855 12.3651V15.7624C130.855 15.8764 130.763 15.9684 130.649 15.9684H126.398C126.284 15.9684 126.192 16.0604 126.192 16.1744V19.8356C126.192 21.1294 126.986 21.5553 128.04 21.5553C129.692 21.5553 131.323 20.8114 131.977 20.4735C132.113 20.4035 132.277 20.5015 132.277 20.6555V26.3543C132.277 26.5063 132.193 26.6463 132.059 26.7183C131.413 27.0582 129.418 28 127.136 28C122.435 27.996 118.918 26.0824 118.918 20.7095ZM109.266 27.4981V16.1704C109.266 16.0564 109.358 15.9644 109.472 15.9644H116.334C116.448 15.9644 116.54 16.0564 116.54 16.1704V27.4981C116.54 27.6121 116.448 27.7041 116.334 27.7041H109.472C109.358 27.7021 109.266 27.6101 109.266 27.4981ZM108.876 11.4913C108.876 13.4189 110.238 14.9826 112.853 14.9826C115.469 14.9826 116.83 13.4189 116.83 11.4913C116.83 9.56369 115.471 8 112.853 8C110.238 8 108.876 9.56369 108.876 11.4913Z' fill='white'/%3E%3C/svg%3E");}@-webkit-keyframes formkit-bouncedelay-formkit-form-data-uid-a128ff9f41-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}@keyframes formkit-bouncedelay-formkit-form-data-uid-a128ff9f41-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}.formkit-form[data-uid="a128ff9f41"] blockquote{padding:10px 20px;margin:0 0 20px;border-left:5px solid #e1e1e1;}.formkit-form[data-uid="a128ff9f41"] .seva-custom-content{padding:15px;font-size:16px;color:#fff;mix-blend-mode:difference;}.formkit-form[data-uid="a128ff9f41"] .formkit-modal.guard{max-width:420px;width:100%;} .formkit-form[data-uid="a128ff9f41"]{max-width:700px;}.formkit-form[data-uid="a128ff9f41"] [data-style="clean"]{width:100%;}.formkit-form[data-uid="a128ff9f41"] .formkit-fields{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0 auto;}.formkit-form[data-uid="a128ff9f41"] .formkit-field,.formkit-form[data-uid="a128ff9f41"] .formkit-submit{margin:0 0 15px 0;-webkit-flex:1 0 100%;-ms-flex:1 0 100%;flex:1 0 100%;}.formkit-form[data-uid="a128ff9f41"] .formkit-powered-by-convertkit-container{margin:0;}.formkit-form[data-uid="a128ff9f41"] .formkit-submit{position:static;}.formkit-form[data-uid="a128ff9f41"][min-width~="700"] [data-style="clean"],.formkit-form[data-uid="a128ff9f41"][min-width~="800"] [data-style="clean"]{padding:10px;padding-top:56px;}.formkit-form[data-uid="a128ff9f41"][min-width~="700"] .formkit-fields[data-stacked="false"],.formkit-form[data-uid="a128ff9f41"][min-width~="800"] .formkit-fields[data-stacked="false"]{margin-left:-5px;margin-right:-5px;}.formkit-form[data-uid="a128ff9f41"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="a128ff9f41"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="a128ff9f41"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-submit,.formkit-form[data-uid="a128ff9f41"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-submit{margin:0 5px 15px 5px;}.formkit-form[data-uid="a128ff9f41"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="a128ff9f41"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-field{-webkit-flex:100 1 auto;-ms-flex:100 1 auto;flex:100 1 auto;}.formkit-form[data-uid="a128ff9f41"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-submit,.formkit-form[data-uid="a128ff9f41"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-submit{-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;} </style></form>
+      <form action="https://app.kit.com/forms/9135909/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9135909" data-uid="a128ff9f41" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800"><div data-style="clean"><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;" aria-label="Email Address" placeholder="Email Address" required="" type="email"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">寄給我 →</span></button></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow">Built with Kit</a></div></div></form>
     </div>
-
     <div class="result-cta-box">
       <h3>預約一次 15 分鐘的通話</h3>
       <p>你不需要事先把問題整理清楚。<br>帶著現在最重的那一句話來就可以，<br>我來幫你把它放在對的位置上。</p>
@@ -823,25 +285,23 @@
     </div>
   </div>
 
+  <!-- 悶蓋型 -->
   <div class="result-section" id="result-silent">
     <div class="result-badge silent">⚪ &nbsp;悶蓋型</div>
     <p class="result-title">表面還好，<br>但管道已經被蓋住很久了</p>
     <p class="result-subtitle">沒有爆炸，不代表沒有漏風——只是還沒到臨界點</p>
-
     <div class="result-body">
       <p>你答題的方向顯示：家裡沒有明顯的危機，大家都在過日子。但這種「說不清楚哪裡不對」的感覺，往往比已經爆炸的問題更難處理——因為它很難被承認。</p>
       <div class="result-highlight">「一個消音太久的家，最後會失去一個功能：把問題攤開、把訊息說完、把關係修回來。」</div>
       <p>悶蓋型最危險的地方是：時間越久，開口的成本越高，大家越習慣用沉默換和平。等到有一天蓋子壓不住，壓力出口往往不是大人，而是孩子。</p>
       <p>你現在需要的，不是等到出事才行動，而是在還有空間的時候，讓管道先通一點點。</p>
     </div>
-
     <div class="kit-embed-wrapper">
       <h4>📥 獲取完整分析與解方</h4>
       <p>輸入 Email，我會把這份「悶蓋型」的詳細應對指南寄給你，方便你隨時保留查看。</p>
       <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-      <form action="https://app.kit.com/forms/9135910/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9135910" data-uid="f561033251" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800"><div data-style="clean"><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;" aria-label="Email Address" placeholder="Email Address" required="" type="email"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Subscribe</span></button></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow">Built with Kit</a></div></div><style>.formkit-form[data-uid="f561033251"] *{box-sizing:border-box;}.formkit-form[data-uid="f561033251"]{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.formkit-form[data-uid="f561033251"] legend{border:none;font-size:inherit;margin-bottom:10px;padding:0;position:relative;display:table;}.formkit-form[data-uid="f561033251"] fieldset{border:0;padding:0.01em 0 0 0;margin:0;min-width:0;}.formkit-form[data-uid="f561033251"] body:not(:-moz-handler-blocked) fieldset{display:table-cell;}.formkit-form[data-uid="f561033251"] h1,.formkit-form[data-uid="f561033251"] h2,.formkit-form[data-uid="f561033251"] h3,.formkit-form[data-uid="f561033251"] h4,.formkit-form[data-uid="f561033251"] h5,.formkit-form[data-uid="f561033251"] h6{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="f561033251"] h2{font-size:1.5em;margin:1em 0;}.formkit-form[data-uid="f561033251"] h3{font-size:1.17em;margin:1em 0;}.formkit-form[data-uid="f561033251"] p{color:inherit;font-size:inherit;font-weight:inherit;}.formkit-form[data-uid="f561033251"] ol:not([template-default]),.formkit-form[data-uid="f561033251"] ul:not([template-default]),.formkit-form[data-uid="f561033251"] blockquote:not([template-default]){text-align:left;}.formkit-form[data-uid="f561033251"] p:not([template-default]),.formkit-form[data-uid="f561033251"] hr:not([template-default]),.formkit-form[data-uid="f561033251"] blockquote:not([template-default]),.formkit-form[data-uid="f561033251"] ol:not([template-default]),.formkit-form[data-uid="f561033251"] ul:not([template-default]){color:inherit;font-style:initial;}.formkit-form[data-uid="f561033251"] .ordered-list,.formkit-form[data-uid="f561033251"] .unordered-list{list-style-position:outside !important;padding-left:1em;}.formkit-form[data-uid="f561033251"] .list-item{padding-left:0;}.formkit-form[data-uid="f561033251"][data-format="modal"]{display:none;}.formkit-form[data-uid="f561033251"][data-format="slide in"]{display:none;}.formkit-form[data-uid="f561033251"][data-format="sticky bar"]{display:none;}.formkit-sticky-bar .formkit-form[data-uid="f561033251"][data-format="sticky bar"]{display:block;}.formkit-form[data-uid="f561033251"] .formkit-input,.formkit-form[data-uid="f561033251"] .formkit-select,.formkit-form[data-uid="f561033251"] .formkit-checkboxes{width:100%;}.formkit-form[data-uid="f561033251"] .formkit-button,.formkit-form[data-uid="f561033251"] .formkit-submit{border:0;border-radius:5px;color:#ffffff;cursor:pointer;display:inline-block;text-align:center;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:15px;overflow:hidden;padding:0;position:relative;vertical-align:middle;}.formkit-form[data-uid="f561033251"] .formkit-button:hover,.formkit-form[data-uid="f561033251"] .formkit-submit:hover,.formkit-form[data-uid="f561033251"] .formkit-button:focus,.formkit-form[data-uid="f561033251"] .formkit-submit:focus{outline:none;}.formkit-form[data-uid="f561033251"] .formkit-button:hover > span,.formkit-form[data-uid="f561033251"] .formkit-submit:hover > span,.formkit-form[data-uid="f561033251"] .formkit-button:focus > span,.formkit-form[data-uid="f561033251"] .formkit-submit:focus > span{background-color:rgba(0,0,0,0.1);}.formkit-form[data-uid="f561033251"] .formkit-button > span,.formkit-form[data-uid="f561033251"] .formkit-submit > span{display:block;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;padding:12px 24px;}.formkit-form[data-uid="f561033251"] .formkit-input{background:#ffffff;font-size:15px;padding:12px;border:1px solid #e3e3e3;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;line-height:1.4;margin:0;-webkit-transition:border-color ease-out 300ms;transition:border-color ease-out 300ms;}.formkit-form[data-uid="f561033251"] .formkit-input:focus{outline:none;border-color:#1677be;-webkit-transition:border-color ease 300ms;transition:border-color ease 300ms;}.formkit-form[data-uid="f561033251"] .formkit-input::-webkit-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="f561033251"] .formkit-input::-moz-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="f561033251"] .formkit-input:-ms-input-placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="f561033251"] .formkit-input::placeholder{color:inherit;opacity:0.8;}.formkit-form[data-uid="f561033251"] [data-group="dropdown"]{position:relative;display:inline-block;width:100%;}.formkit-form[data-uid="f561033251"] [data-group="dropdown"]::before{content:"";top:calc(50% - 2.5px);right:10px;position:absolute;pointer-events:none;border-color:#4f4f4f transparent transparent transparent;border-style:solid;border-width:6px 6px 0 6px;height:0;width:0;z-index:999;}.formkit-form[data-uid="f561033251"] [data-group="dropdown"] select{height:auto;width:100%;cursor:pointer;color:#333333;line-height:1.4;margin-bottom:0;padding:0 6px;-webkit-appearance:none;-moz-appearance:none;appearance:none;font-size:15px;padding:12px;padding-right:25px;border:1px solid #e3e3e3;background:#ffffff;}.formkit-form[data-uid="f561033251"] [data-group="dropdown"] select:focus{outline:none;}.formkit-form[data-uid="f561033251"] [data-group="checkboxes"]{text-align:left;margin:0;}.formkit-form[data-uid="f561033251"] [data-group="checkboxes"] [data-group="checkbox"]{margin-bottom:10px;}.formkit-form[data-uid="f561033251"] [data-group="checkboxes"] [data-group="checkbox"] *{cursor:pointer;}.formkit-form[data-uid="f561033251"] [data-group="checkboxes"] [data-group="checkbox"]:last-of-type{margin-bottom:0;}.formkit-form[data-uid="f561033251"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]{display:none;}.formkit-form[data-uid="f561033251"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"] + label::after{content:none;}.formkit-form[data-uid="f561033251"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::after{border-color:#ffffff;content:"";}.formkit-form[data-uid="f561033251"] [data-group="checkboxes"] [data-group="checkbox"] input[type="checkbox"]:checked + label::before{background:#10bf7a;border-color:#10bf7a;}.formkit-form[data-uid="f561033251"] [data-group="checkboxes"] [data-group="checkbox"] label{position:relative;display:inline-block;padding-left:28px;}.formkit-form[data-uid="f561033251"] [data-group="checkboxes"] [data-group="checkbox"] label::before,.formkit-form[data-uid="f561033251"] [data-group="checkboxes"] [data-group="checkbox"] label::after{position:absolute;content:"";display:inline-block;}.formkit-form[data-uid="f561033251"] [data-group="checkboxes"] [data-group="checkbox"] label::before{height:16px;width:16px;border:1px solid #e3e3e3;background:#ffffff;left:0px;top:3px;}.formkit-form[data-uid="f561033251"] [data-group="checkboxes"] [data-group="checkbox"] label::after{height:4px;width:8px;border-left:2px solid #4d4d4d;border-bottom:2px solid #4d4d4d;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);left:4px;top:8px;}.formkit-form[data-uid="f561033251"] .formkit-alert{background:#f9fafb;border:1px solid #e3e3e3;border-radius:5px;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;list-style:none;margin:25px auto;padding:12px;text-align:center;width:100%;}.formkit-form[data-uid="f561033251"] .formkit-alert:empty{display:none;}.formkit-form[data-uid="f561033251"] .formkit-alert-success{background:#d3fbeb;border-color:#10bf7a;color:#0c905c;}.formkit-form[data-uid="f561033251"] .formkit-alert-error{background:#fde8e2;border-color:#f2643b;color:#ea4110;}.formkit-form[data-uid="f561033251"] .formkit-spinner{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:0px;width:0px;margin:0 auto;position:absolute;top:0;left:0;right:0;width:0px;overflow:hidden;text-align:center;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;}.formkit-form[data-uid="f561033251"] .formkit-spinner > div{margin:auto;width:12px;height:12px;background-color:#fff;opacity:0.3;border-radius:100%;display:inline-block;-webkit-animation:formkit-bouncedelay-formkit-form-data-uid-f561033251- 1.4s infinite ease-in-out both;animation:formkit-bouncedelay-formkit-form-data-uid-f561033251- 1.4s infinite ease-in-out both;}.formkit-form[data-uid="f561033251"] .formkit-spinner > div:nth-child(1){-webkit-animation-delay:-0.32s;animation-delay:-0.32s;}.formkit-form[data-uid="f561033251"] .formkit-spinner > div:nth-child(2){-webkit-animation-delay:-0.16s;animation-delay:-0.16s;}.formkit-form[data-uid="f561033251"] .formkit-submit[data-active] .formkit-spinner{opacity:1;height:100%;width:50px;}.formkit-form[data-uid="f561033251"] .formkit-submit[data-active] .formkit-spinner ~ span{opacity:0;}.formkit-form[data-uid="f561033251"] .formkit-powered-by[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="f561033251"] .formkit-powered-by-convertkit-container{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;margin:10px 0;position:relative;}.formkit-form[data-uid="f561033251"] .formkit-powered-by-convertkit-container[data-active="false"]{opacity:0.35;}.formkit-form[data-uid="f561033251"] .formkit-powered-by-convertkit{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ffffff;border-radius:9px;color:#3d3d3d;cursor:pointer;display:block;height:36px;margin:0 auto;opacity:0.95;padding:0;-webkit-text-decoration:none;text-decoration:none;text-indent:100%;-webkit-transition:ease-in-out all 200ms;transition:ease-in-out all 200ms;white-space:nowrap;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:157px;background-repeat:no-repeat;background-position:center;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='133' height='36' viewBox='0 0 133 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.861 25.5C0.735 25.5 0.651 25.416 0.651 25.29V10.548C0.651 10.422 0.735 10.338 0.861 10.338H6.279C9.072 10.338 10.668 11.451 10.668 13.824C10.668 15.819 9.219 16.932 8.001 17.226C7.707 17.268 7.707 17.625 8.022 17.688C9.912 18.108 11.088 19.116 11.088 21.321C11.088 23.715 9.429 25.5 6.426 25.5H0.861ZM5.397 23.085C6.825 23.085 7.518 22.224 7.518 21.006C7.518 19.683 6.825 18.948 5.397 18.948H4.2V23.085H5.397ZM5.313 16.617C6.51 16.617 7.245 15.945 7.245 14.601C7.245 13.383 6.51 12.753 5.25 12.753H4.2V16.617H5.313ZM17.9758 23.883C17.9758 23.568 17.6608 23.505 17.5348 23.799C17.0308 24.954 16.1698 25.731 14.5528 25.731C12.8728 25.731 12.0958 24.471 12.0958 22.707V14.937C12.0958 14.811 12.1798 14.727 12.3058 14.727H15.2248C15.3508 14.727 15.4348 14.811 15.4348 14.937V21.657C15.4348 22.581 15.7708 23.022 16.4638 23.022C17.1778 23.022 17.6188 22.581 17.6188 21.657V14.937C17.6188 14.811 17.7028 14.727 17.8288 14.727H20.7478C20.8738 14.727 20.9578 14.811 20.9578 14.937V25.29C20.9578 25.416 20.8738 25.5 20.7478 25.5H18.1858C18.0598 25.5 17.9758 25.416 17.9758 25.29V23.883ZM25.6141 25.29C25.6141 25.416 25.5301 25.5 25.4041 25.5H22.4851C22.3591 25.5 22.2751 25.416 22.2751 25.29V14.937C22.2751 14.811 22.3591 14.727 22.4851 14.727H25.4041C25.5301 14.727 25.6141 14.811 25.6141 14.937V25.29ZM23.9131 13.74C22.8001 13.74 22.0441 12.942 22.0441 11.934C22.0441 10.926 22.8001 10.107 23.9131 10.107C25.0051 10.107 25.7611 10.926 25.7611 11.934C25.7611 12.942 25.0051 13.74 23.9131 13.74ZM26.7883 10.548C26.7883 10.422 26.8723 10.338 26.9983 10.338H29.9173C30.0433 10.338 30.1273 10.422 30.1273 10.548V22.056C30.1273 22.749 30.2533 23.085 30.8203 23.085C31.0093 23.085 31.1983 23.043 31.3663 23.001C31.5133 22.959 31.6183 22.959 31.6183 23.127V25.059C31.6183 25.164 31.5763 25.269 31.4923 25.311C30.9673 25.521 30.2953 25.71 29.5813 25.71C27.7123 25.71 26.7883 24.639 26.7883 22.476V10.548ZM32.4237 14.727C32.8227 14.727 32.9277 14.538 32.9697 14.055L33.1167 12.039C33.1167 11.913 33.2217 11.829 33.3477 11.829H35.8887C36.0147 11.829 36.0987 11.913 36.0987 12.039V14.517C36.0987 14.643 36.1827 14.727 36.3087 14.727H38.2827C38.4087 14.727 38.4927 14.811 38.4927 14.937V16.659C38.4927 16.785 38.4087 16.869 38.2827 16.869H36.0777V22.056C36.0777 22.875 36.5397 23.085 37.0647 23.085C37.4847 23.085 37.9467 22.938 38.3247 22.707C38.4717 22.623 38.5767 22.665 38.5767 22.833V24.828C38.5767 24.933 38.5347 25.017 38.4507 25.08C37.8417 25.458 36.9807 25.71 36.0357 25.71C34.2927 25.71 32.7387 24.912 32.7387 22.476V16.869H31.8567C31.7307 16.869 31.6467 16.785 31.6467 16.659V14.937C31.6467 14.811 31.7307 14.727 31.8567 14.727H32.4237ZM51.3808 14.727C51.5068 14.727 51.5908 14.79 51.6118 14.916L52.3888 19.851L52.5778 21.174C52.6198 21.468 52.9558 21.468 52.9768 21.174C53.0398 20.712 53.0818 20.271 53.1658 19.83L53.8798 14.916C53.9008 14.79 53.9848 14.727 54.1108 14.727H56.6728C56.8198 14.727 56.8828 14.811 56.8618 14.958L54.6778 25.311C54.6568 25.437 54.5728 25.5 54.4468 25.5H51.3178C51.1918 25.5 51.1078 25.437 51.0868 25.311L50.1208 20.082L49.8898 18.633C49.8688 18.444 49.6588 18.444 49.6378 18.633L49.4068 20.103L48.5458 25.311C48.5248 25.437 48.4408 25.5 48.3148 25.5H45.2068C45.0808 25.5 44.9968 25.437 44.9758 25.311L42.8128 14.958C42.7918 14.811 42.8548 14.727 43.0018 14.727H45.9628C46.0888 14.727 46.1728 14.79 46.1938 14.916L46.9288 19.83C47.0128 20.271 47.0758 20.754 47.1388 21.195C47.2018 21.51 47.4748 21.531 47.5378 21.195L47.7478 19.872L48.6088 14.916C48.6298 14.79 48.7138 14.727 48.8398 14.727H51.3808ZM61.1582 25.29C61.1582 25.416 61.0742 25.5 60.9482 25.5H58.0292C57.9032 25.5 57.8192 25.416 57.8192 25.29V14.937C57.8192 14.811 57.9032 14.727 58.0292 14.727H60.9482C61.0742 14.727 61.1582 14.811 61.1582 14.937V25.29ZM59.4572 13.74C58.3442 13.74 57.5882 12.942 57.5882 11.934C57.5882 10.926 58.3442 10.107 59.4572 10.107C60.5492 10.107 61.3052 10.926 61.3052 11.934C61.3052 12.942 60.5492 13.74 59.4572 13.74ZM62.8154 14.727C63.2144 14.727 63.3194 14.538 63.3614 14.055L63.5084 12.039C63.5084 11.913 63.6134 11.829 63.7394 11.829H66.2804C66.4064 11.829 66.4904 11.913 66.4904 12.039V14.517C66.4904 14.643 66.5744 14.727 66.7004 14.727H68.6744C68.8004 14.727 68.8844 14.811 68.8844 14.937V16.659C68.8844 16.785 68.8004 16.869 68.6744 16.869H66.4694V22.056C66.4694 22.875 66.9314 23.085 67.4564 23.085C67.8764 23.085 68.3384 22.938 68.7164 22.707C68.8634 22.623 68.9684 22.665 68.9684 22.833V24.828C68.9684 24.933 68.9264 25.017 68.8424 25.08C68.2334 25.458 67.3724 25.71 66.4274 25.71C64.6844 25.71 63.1304 24.912 63.1304 22.476V16.869H62.2484C62.1224 16.869 62.0384 16.785 62.0384 16.659V14.937C62.0384 14.811 62.1224 14.727 62.2484 14.727H62.8154ZM73.4298 16.323C73.4298 16.638 73.7868 16.68 73.9128 16.407C74.3748 15.315 75.1308 14.496 76.6008 14.496C78.2178 14.496 78.9528 15.609 78.9528 17.373V25.29C78.9528 25.416 78.8688 25.5 78.7428 25.5H75.8238C75.6978 25.5 75.6138 25.416 75.6138 25.29V18.633C75.6138 17.709 75.2778 17.268 74.5848 17.268C73.8708 17.268 73.4298 17.709 73.4298 18.633V25.29C73.4298 25.416 73.3458 25.5 73.2198 25.5H70.3008C70.1748 25.5 70.0908 25.416 70.0908 25.29V10.548C70.0908 10.422 70.1748 10.338 70.3008 10.338H73.2198C73.3458 10.338 73.4298 10.422 73.4298 10.548V16.323Z' fill='%231E1E1E'/%3E%3Cpath d='M100.132 16.3203C105.58 17.3761 107.272 22.4211 107.318 27.4961C107.318 27.6101 107.226 27.7041 107.112 27.7041H100.252C100.138 27.7041 100.046 27.6121 100.046 27.5001C100.026 23.5629 99.3877 20.0896 95.4865 19.9396C95.3705 19.9356 95.2725 20.0276 95.2725 20.1456V27.5001C95.2725 27.6141 95.1806 27.7061 95.0666 27.7061H88.206C88.092 27.7061 88 27.6141 88 27.5001V8.75585C88 8.64187 88.092 8.54989 88.206 8.54989H95.0686C95.1826 8.54989 95.2745 8.64187 95.2745 8.75585V15.7764C95.2745 15.8804 95.3585 15.9644 95.4625 15.9644C95.5445 15.9644 95.6185 15.9104 95.6425 15.8324C97.4081 10.0416 100.709 8.58588 106.07 8.55189C106.184 8.55189 106.276 8.64387 106.276 8.75785V15.7604C106.276 15.8744 106.184 15.9664 106.07 15.9664H100.166C100.066 15.9664 99.9856 16.0464 99.9856 16.1464C99.9856 16.2304 100.048 16.3043 100.132 16.3203ZM118.918 20.7095V16.1704C118.918 16.0564 119.01 15.9644 119.124 15.9644H124.173C124.273 15.9644 124.353 15.8844 124.353 15.7844C124.353 15.6985 124.291 15.6245 124.207 15.6085C120.256 14.8246 118.432 12.5511 118.37 8.75585C118.368 8.64387 118.458 8.54989 118.572 8.54989H125.986C126.1 8.54989 126.192 8.64187 126.192 8.75585V11.9532C126.192 12.0672 126.284 12.1592 126.398 12.1592H130.649C130.763 12.1592 130.855 12.2511 130.855 12.3651V15.7624C130.855 15.8764 130.763 15.9684 130.649 15.9684H126.398C126.284 15.9684 126.192 16.0604 126.192 16.1744V19.8356C126.192 21.1294 126.986 21.5553 128.04 21.5553C129.692 21.5553 131.323 20.8114 131.977 20.4735C132.113 20.4035 132.277 20.5015 132.277 20.6555V26.3543C132.277 26.5063 132.193 26.6463 132.059 26.7183C131.413 27.0582 129.418 28 127.136 28C122.435 27.996 118.918 26.0824 118.918 20.7095ZM109.266 27.4981V16.1704C109.266 16.0564 109.358 15.9644 109.472 15.9644H116.334C116.448 15.9644 116.54 16.0564 116.54 16.1704V27.4981C116.54 27.6121 116.448 27.7041 116.334 27.7041H109.472C109.358 27.7021 109.266 27.6101 109.266 27.4981ZM108.876 11.4913C108.876 13.4189 110.238 14.9826 112.853 14.9826C115.469 14.9826 116.83 13.4189 116.83 11.4913C116.83 9.56369 115.471 8 112.853 8C110.238 8 108.876 9.56369 108.876 11.4913Z' fill='%231E1E1E'/%3E%3C/svg%3E");}.formkit-form[data-uid="f561033251"] .formkit-powered-by-convertkit:hover,.formkit-form[data-uid="f561033251"] .formkit-powered-by-convertkit:focus{background-color:#ffffff;-webkit-transform:scale(1.025) perspective(1px);-ms-transform:scale(1.025) perspective(1px);transform:scale(1.025) perspective(1px);opacity:1;}.formkit-form[data-uid="f561033251"] .formkit-powered-by-convertkit[data-variant="dark"],.formkit-form[data-uid="f561033251"] .formkit-powered-by-convertkit[data-variant="light"]{background-color:transparent;border-color:transparent;width:133px;}.formkit-form[data-uid="f561033251"] .formkit-powered-by-convertkit[data-variant="light"]{color:#ffffff;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg width='133' height='36' viewBox='0 0 133 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.861 25.5C0.735 25.5 0.651 25.416 0.651 25.29V10.548C0.651 10.422 0.735 10.338 0.861 10.338H6.279C9.072 10.338 10.668 11.451 10.668 13.824C10.668 15.819 9.219 16.932 8.001 17.226C7.707 17.268 7.707 17.625 8.022 17.688C9.912 18.108 11.088 19.116 11.088 21.321C11.088 23.715 9.429 25.5 6.426 25.5H0.861ZM5.397 23.085C6.825 23.085 7.518 22.224 7.518 21.006C7.518 19.683 6.825 18.948 5.397 18.948H4.2V23.085H5.397ZM5.313 16.617C6.51 16.617 7.245 15.945 7.245 14.601C7.245 13.383 6.51 12.753 5.25 12.753H4.2V16.617H5.313ZM17.9758 23.883C17.9758 23.568 17.6608 23.505 17.5348 23.799C17.0308 24.954 16.1698 25.731 14.5528 25.731C12.8728 25.731 12.0958 24.471 12.0958 22.707V14.937C12.0958 14.811 12.1798 14.727 12.3058 14.727H15.2248C15.3508 14.727 15.4348 14.811 15.4348 14.937V21.657C15.4348 22.581 15.7708 23.022 16.4638 23.022C17.1778 23.022 17.6188 22.581 17.6188 21.657V14.937C17.6188 14.811 17.7028 14.727 17.8288 14.727H20.7478C20.8738 14.727 20.9578 14.811 20.9578 14.937V25.29C20.9578 25.416 20.8738 25.5 20.7478 25.5H18.1858C18.0598 25.5 17.9758 25.416 17.9758 25.29V23.883ZM25.6141 25.29C25.6141 25.416 25.5301 25.5 25.4041 25.5H22.4851C22.3591 25.5 22.2751 25.416 22.2751 25.29V14.937C22.2751 14.811 22.3591 14.727 22.4851 14.727H25.4041C25.5301 14.727 25.6141 14.811 25.6141 14.937V25.29ZM23.9131 13.74C22.8001 13.74 22.0441 12.942 22.0441 11.934C22.0441 10.926 22.8001 10.107 23.9131 10.107C25.0051 10.107 25.7611 10.926 25.7611 11.934C25.7611 12.942 25.0051 13.74 23.9131 13.74ZM26.7883 10.548C26.7883 10.422 26.8723 10.338 26.9983 10.338H29.9173C30.0433 10.338 30.1273 10.422 30.1273 10.548V22.056C30.1273 22.749 30.2533 23.085 30.8203 23.085C31.0093 23.085 31.1983 23.043 31.3663 23.001C31.5133 22.959 31.6183 22.959 31.6183 23.127V25.059C31.6183 25.164 31.5763 25.269 31.4923 25.311C30.9673 25.521 30.2953 25.71 29.5813 25.71C27.7123 25.71 26.7883 24.639 26.7883 22.476V10.548ZM32.4237 14.727C32.8227 14.727 32.9277 14.538 32.9697 14.055L33.1167 12.039C33.1167 11.913 33.2217 11.829 33.3477 11.829H35.8887C36.0147 11.829 36.0987 11.913 36.0987 12.039V14.517C36.0987 14.643 36.1827 14.727 36.3087 14.727H38.2827C38.4087 14.727 38.4927 14.811 38.4927 14.937V16.659C38.4927 16.785 38.4087 16.869 38.2827 16.869H36.0777V22.056C36.0777 22.875 36.5397 23.085 37.0647 23.085C37.4847 23.085 37.9467 22.938 38.3247 22.707C38.4717 22.623 38.5767 22.665 38.5767 22.833V24.828C38.5767 24.933 38.5347 25.017 38.4507 25.08C37.8417 25.458 36.9807 25.71 36.0357 25.71C34.2927 25.71 32.7387 24.912 32.7387 22.476V16.869H31.8567C31.7307 16.869 31.6467 16.785 31.6467 16.659V14.937C31.6467 14.811 31.7307 14.727 31.8567 14.727H32.4237ZM51.3808 14.727C51.5068 14.727 51.5908 14.79 51.6118 14.916L52.3888 19.851L52.5778 21.174C52.6198 21.468 52.9558 21.468 52.9768 21.174C53.0398 20.712 53.0818 20.271 53.1658 19.83L53.8798 14.916C53.9008 14.79 53.9848 14.727 54.1108 14.727H56.6728C56.8198 14.727 56.8828 14.811 56.8618 14.958L54.6778 25.311C54.6568 25.437 54.5728 25.5 54.4468 25.5H51.3178C51.1918 25.5 51.1078 25.437 51.0868 25.311L50.1208 20.082L49.8898 18.633C49.8688 18.444 49.6588 18.444 49.6378 18.633L49.4068 20.103L48.5458 25.311C48.5248 25.437 48.4408 25.5 48.3148 25.5H45.2068C45.0808 25.5 44.9968 25.437 44.9758 25.311L42.8128 14.958C42.7918 14.811 42.8548 14.727 43.0018 14.727H45.9628C46.0888 14.727 46.1728 14.79 46.1938 14.916L46.9288 19.83C47.0128 20.271 47.0758 20.754 47.1388 21.195C47.2018 21.51 47.4748 21.531 47.5378 21.195L47.7478 19.872L48.6088 14.916C48.6298 14.79 48.7138 14.727 48.8398 14.727H51.3808ZM61.1582 25.29C61.1582 25.416 61.0742 25.5 60.9482 25.5H58.0292C57.9032 25.5 57.8192 25.416 57.8192 25.29V14.937C57.8192 14.811 57.9032 14.727 58.0292 14.727H60.9482C61.0742 14.727 61.1582 14.811 61.1582 14.937V25.29ZM59.4572 13.74C58.3442 13.74 57.5882 12.942 57.5882 11.934C57.5882 10.926 58.3442 10.107 59.4572 10.107C60.5492 10.107 61.3052 10.926 61.3052 11.934C61.3052 12.942 60.5492 13.74 59.4572 13.74ZM62.8154 14.727C63.2144 14.727 63.3194 14.538 63.3614 14.055L63.5084 12.039C63.5084 11.913 63.6134 11.829 63.7394 11.829H66.2804C66.4064 11.829 66.4904 11.913 66.4904 12.039V14.517C66.4904 14.643 66.5744 14.727 66.7004 14.727H68.6744C68.8004 14.727 68.8844 14.811 68.8844 14.937V16.659C68.8844 16.785 68.8004 16.869 68.6744 16.869H66.4694V22.056C66.4694 22.875 66.9314 23.085 67.4564 23.085C67.8764 23.085 68.3384 22.938 68.7164 22.707C68.8634 22.623 68.9684 22.665 68.9684 22.833V24.828C68.9684 24.933 68.9264 25.017 68.8424 25.08C68.2334 25.458 67.3724 25.71 66.4274 25.71C64.6844 25.71 63.1304 24.912 63.1304 22.476V16.869H62.2484C62.1224 16.869 62.0384 16.785 62.0384 16.659V14.937C62.0384 14.811 62.1224 14.727 62.2484 14.727H62.8154ZM73.4298 16.323C73.4298 16.638 73.7868 16.68 73.9128 16.407C74.3748 15.315 75.1308 14.496 76.6008 14.496C78.2178 14.496 78.9528 15.609 78.9528 17.373V25.29C78.9528 25.416 78.8688 25.5 78.7428 25.5H75.8238C75.6978 25.5 75.6138 25.416 75.6138 25.29V18.633C75.6138 17.709 75.2778 17.268 74.5848 17.268C73.8708 17.268 73.4298 17.709 73.4298 18.633V25.29C73.4298 25.416 73.3458 25.5 73.2198 25.5H70.3008C70.1748 25.5 70.0908 25.416 70.0908 25.29V10.548C70.0908 10.422 70.1748 10.338 70.3008 10.338H73.2198C73.3458 10.338 73.4298 10.422 73.4298 10.548V16.323Z' fill='white'/%3E%3Cpath d='M100.132 16.3203C105.58 17.3761 107.272 22.4211 107.318 27.4961C107.318 27.6101 107.226 27.7041 107.112 27.7041H100.252C100.138 27.7041 100.046 27.6121 100.046 27.5001C100.026 23.5629 99.3877 20.0896 95.4865 19.9396C95.3705 19.9356 95.2725 20.0276 95.2725 20.1456V27.5001C95.2725 27.6141 95.1806 27.7061 95.0666 27.7061H88.206C88.092 27.7061 88 27.6141 88 27.5001V8.75585C88 8.64187 88.092 8.54989 88.206 8.54989H95.0686C95.1826 8.54989 95.2745 8.64187 95.2745 8.75585V15.7764C95.2745 15.8804 95.3585 15.9644 95.4625 15.9644C95.5445 15.9644 95.6185 15.9104 95.6425 15.8324C97.4081 10.0416 100.709 8.58588 106.07 8.55189C106.184 8.55189 106.276 8.64387 106.276 8.75785V15.7604C106.276 15.8744 106.184 15.9664 106.07 15.9664H100.166C100.066 15.9664 99.9856 16.0464 99.9856 16.1464C99.9856 16.2304 100.048 16.3043 100.132 16.3203ZM118.918 20.7095V16.1704C118.918 16.0564 119.01 15.9644 119.124 15.9644H124.173C124.273 15.9644 124.353 15.8844 124.353 15.7844C124.353 15.6985 124.291 15.6245 124.207 15.6085C120.256 14.8246 118.432 12.5511 118.37 8.75585C118.368 8.64387 118.458 8.54989 118.572 8.54989H125.986C126.1 8.54989 126.192 8.64187 126.192 8.75585V11.9532C126.192 12.0672 126.284 12.1592 126.398 12.1592H130.649C130.763 12.1592 130.855 12.2511 130.855 12.3651V15.7624C130.855 15.8764 130.763 15.9684 130.649 15.9684H126.398C126.284 15.9684 126.192 16.0604 126.192 16.1744V19.8356C126.192 21.1294 126.986 21.5553 128.04 21.5553C129.692 21.5553 131.323 20.8114 131.977 20.4735C132.113 20.4035 132.277 20.5015 132.277 20.6555V26.3543C132.277 26.5063 132.193 26.6463 132.059 26.7183C131.413 27.0582 129.418 28 127.136 28C122.435 27.996 118.918 26.0824 118.918 20.7095ZM109.266 27.4981V16.1704C109.266 16.0564 109.358 15.9644 109.472 15.9644H116.334C116.448 15.9644 116.54 16.0564 116.54 16.1704V27.4981C116.54 27.6121 116.448 27.7041 116.334 27.7041H109.472C109.358 27.7021 109.266 27.6101 109.266 27.4981ZM108.876 11.4913C108.876 13.4189 110.238 14.9826 112.853 14.9826C115.469 14.9826 116.83 13.4189 116.83 11.4913C116.83 9.56369 115.471 8 112.853 8C110.238 8 108.876 9.56369 108.876 11.4913Z' fill='white'/%3E%3C/svg%3E");}@-webkit-keyframes formkit-bouncedelay-formkit-form-data-uid-f561033251-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}@keyframes formkit-bouncedelay-formkit-form-data-uid-f561033251-{0%,80%,100%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}40%{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}.formkit-form[data-uid="f561033251"] blockquote{padding:10px 20px;margin:0 0 20px;border-left:5px solid #e1e1e1;}.formkit-form[data-uid="f561033251"] .seva-custom-content{padding:15px;font-size:16px;color:#fff;mix-blend-mode:difference;}.formkit-form[data-uid="f561033251"] .formkit-modal.guard{max-width:420px;width:100%;} .formkit-form[data-uid="f561033251"]{max-width:700px;}.formkit-form[data-uid="f561033251"] [data-style="clean"]{width:100%;}.formkit-form[data-uid="f561033251"] .formkit-fields{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0 auto;}.formkit-form[data-uid="f561033251"] .formkit-field,.formkit-form[data-uid="f561033251"] .formkit-submit{margin:0 0 15px 0;-webkit-flex:1 0 100%;-ms-flex:1 0 100%;flex:1 0 100%;}.formkit-form[data-uid="f561033251"] .formkit-powered-by-convertkit-container{margin:0;}.formkit-form[data-uid="f561033251"] .formkit-submit{position:static;}.formkit-form[data-uid="f561033251"][min-width~="700"] [data-style="clean"],.formkit-form[data-uid="f561033251"][min-width~="800"] [data-style="clean"]{padding:10px;padding-top:56px;}.formkit-form[data-uid="f561033251"][min-width~="700"] .formkit-fields[data-stacked="false"],.formkit-form[data-uid="f561033251"][min-width~="800"] .formkit-fields[data-stacked="false"]{margin-left:-5px;margin-right:-5px;}.formkit-form[data-uid="f561033251"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="f561033251"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="f561033251"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-submit,.formkit-form[data-uid="f561033251"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-submit{margin:0 5px 15px 5px;}.formkit-form[data-uid="f561033251"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-field,.formkit-form[data-uid="f561033251"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-field{-webkit-flex:100 1 auto;-ms-flex:100 1 auto;flex:100 1 auto;}.formkit-form[data-uid="f561033251"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-submit,.formkit-form[data-uid="f561033251"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-submit{-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;} </style></form>
+      <form action="https://app.kit.com/forms/9135910/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9135910" data-uid="f561033251" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800"><div data-style="clean"><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;" aria-label="Email Address" placeholder="Email Address" required="" type="email"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">寄給我 →</span></button></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow">Built with Kit</a></div></div></form>
     </div>
-
     <div class="result-cta-box">
       <h3>預約一次 15 分鐘的通話</h3>
       <p>你不需要等到有具體的問題才能來。<br>「說不清楚哪裡怪」本身就是最好的起點，<br>我來幫你把它說出來。</p>
@@ -858,10 +318,9 @@
       <p style="margin-top:8px; color: var(--brown-light);">我自己也是局裡的人。專業不是永遠不出事，是出事時能更快看見模式，讓關係有機會重新接上。</p>
     </div>
   </div>
+</div>
 
-</div><footer>
-  © 2025 &nbsp;｜&nbsp; 所有內容僅供參考，不取代專業心理諮詢
-</footer>
+<footer>© 2025 ｜ 所有內容僅供參考，不取代專業心理諮詢</footer>
 
 <script>
   const answers = {};
@@ -875,10 +334,7 @@
   function showQuestion(n) {
     document.querySelectorAll('.question-section').forEach(q => q.classList.remove('active'));
     const el = document.getElementById('q' + n);
-    if (el) {
-      el.classList.add('active');
-      updateProgress(n);
-    }
+    if (el) { el.classList.add('active'); updateProgress(n); }
   }
 
   function updateProgress(n) {
@@ -901,35 +357,33 @@
     showQuestion(current + 1);
   }
 
-  function goBack(current) {
-    showQuestion(current - 1);
-  }
+  function goBack(current) { showQuestion(current - 1); }
 
   function showResult() {
     if (!answers['q8']) return;
-
-    // Tally scores
     const tally = { alarm: 0, solo: 0, silent: 0 };
     Object.values(answers).forEach(v => tally[v]++);
-
     let result = 'alarm';
     if (tally.solo >= tally.alarm && tally.solo >= tally.silent) result = 'solo';
     if (tally.silent > tally.alarm && tally.silent > tally.solo) result = 'silent';
-
-    // Hide all questions and progress
     document.querySelectorAll('.question-section').forEach(q => q.classList.remove('active'));
     document.getElementById('progressWrap').style.display = 'none';
-
-    // Update progress to 100%
     document.getElementById('progressFill').style.width = '100%';
-
-    // Show result
     document.getElementById('result-' + result).classList.add('active');
     document.getElementById('aboutDivider').style.display = 'block';
     document.getElementById('aboutStrip').style.display = 'flex';
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  // 把 Kit 表單的 placeholder 改成中文
+  function fixKitPlaceholders() {
+    document.querySelectorAll('.kit-embed-wrapper .formkit-input').forEach(input => {
+      if (input.placeholder !== '輸入你的 Email') {
+        input.placeholder = '輸入你的 Email';
+      }
+    });
+  }
+  setInterval(fixKitPlaceholders, 500);
 </script>
 </body>
 </html>
